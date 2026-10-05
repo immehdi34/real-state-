@@ -1,0 +1,35 @@
+[
+  {
+    "id": "agent-1",
+    "name": "Victoria Sterling",
+    "title": "Principal Partner & Luxury Director",
+    "phone": "+1 (310) 849-2201",
+    "email": "victoria.sterling@auraestates.com",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    "license_number": "DRE #01928471",
+    "sales_volume": "$640M+",
+    "rating": 5.0
+  },
+  {
+    "id": "agent-2",
+    "name": "Marcus Vance",
+    "title": "Senior Architectural Advisor",
+    "phone": "+1 (212) 659-3382",
+    "email": "marcus.vance@auraestates.com",
+    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+    "license_number": "NY-RE #4920194",
+    "sales_volume": "$480M+",
+    "rating": 4.9
+  },
+  {
+    "id": "agent-3",
+    "name": "Elena Rostova",
+    "title": "Waterfront & Private Islands Specialist",
+    "phone": "+1 (305) 912-4420",
+    "email": "elena.rostova@auraestates.com",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+    "license_number": "FL-RE #BK394821",
+    "sales_volume": "$520M+",
+    "rating": 5.0
+  }
+]

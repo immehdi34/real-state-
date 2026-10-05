@@ -1,0 +1,28 @@
+{
+  "name": "aura-estates-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack luxury real estate portal based on Google Stitch design, built with React.js, Express.js, and Supabase",
+  "scripts": {
+    "dev": "node backend/server.js",
+    "server": "node backend/server.js",
+    "client": "cd frontend && npm run dev",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "node backend/server.js"
+  },
+  "keywords": [
+    "real-estate",
+    "react",
+    "express",
+    "supabase",
+    "stitch",
+    "vercel"
+  ],
+  "author": "Ali Mehdi",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "inq-1",
+    "property_id": "prop-1",
+    "property_title": "The Horizon Glass Villa",
+    "name": "Harrison Wells",
+    "email": "h.wells@starventures.com",
+    "phone": "+1 (415) 302-8819",
+    "type": "Private Showing",
+    "preferred_date": "2026-10-10",
+    "preferred_time": "14:00",
+    "message": "Looking to arrange a private walkthrough for a high-net-worth buyer traveling from Zurich this weekend.",
+    "status": "New",
+    "created_at": "2026-10-02T11:20:00Z"
+  },
+  {
+    "id": "inq-2",
+    "property_id": "prop-2",
+    "property_title": "Central Park Sky Penthouse",
+    "name": "Sophia Davenport",
+    "email": "sdavenport@davenportcap.com",
+    "phone": "+1 (212) 998-1120",
+    "type": "Schedule Tour",
+    "preferred_date": "2026-10-08",
+    "preferred_time": "16:30",
+    "message": "Interested in viewing the sunset views from the terrace and verifying HOA rules regarding private chef catering.",
+    "status": "Contacted",
+    "created_at": "2026-10-01T15:45:00Z"
+  }
+]

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Inter',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed-dim": "#c4c7c9",
+          "primary": "#000000",
+          "secondary-fixed": "#6ffbbe",
+          "tertiary-container": "#191c1e",
+          "on-tertiary-fixed": "#191c1e",
+          "inverse-primary": "#bec6e0",
+          "primary-fixed": "#dae2fd",
+          "surface": "#f8f9ff",
+          "error-container": "#ffdad6",
+          "surface-dim": "#cbdbf5",
+          "on-secondary-fixed-variant": "#005236",
+          "inverse-on-surface": "#eaf1ff",
+          "surface-variant": "#d3e4fe",
+          "error": "#ba1a1a",
+          "surface-container-low": "#eff4ff",
+          "on-tertiary": "#ffffff",
+          "tertiary": "#000000",
+          "surface-container-high": "#dce9ff",
+          "inverse-surface": "#213145",
+          "secondary": "#006c49",
+          "background": "#f8f9ff",
+          "secondary-container": "#6cf8bb",
+          "surface-tint": "#565e74",
+          "primary-container": "#131b2e",
+          "surface-container-lowest": "#ffffff",
+          "on-surface": "#0b1c30",
+          "on-background": "#0b1c30",
+          "on-tertiary-container": "#818486",
+          "primary-fixed-dim": "#bec6e0",
+          "surface-container-highest": "#d3e4fe",
+          "on-primary-container": "#7c839b",
+          "on-tertiary-fixed-variant": "#444749",
+          "on-primary-fixed": "#131b2e",
+          "tertiary-fixed": "#e0e3e5",
+          "surface-container": "#e5eeff",
+          "outline-variant": "#c6c6cd",
+          "on-primary-fixed-variant": "#3f465c",
+          "on-secondary": "#ffffff",
+          "surface-bright": "#f8f9ff",
+          "secondary-fixed-dim": "#4edea3",
+          "outline": "#76777d",
+          "on-error": "#ffffff",
+          "on-error-container": "#93000a",
+          "on-primary": "#ffffff",
+          "on-secondary-container": "#00714d",
+          "on-secondary-fixed": "#002113",
+          "on-surface-variant": "#45464d"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-sm": "8px",
+          "space-lg": "24px",
+          "gutter": "24px",
+          "space-xs": "4px",
+          "margin": "32px",
+          "space-md": "16px",
+          "space-xl": "48px"
+        },
+        "fontFamily": {
+          "headline-lg": ["Inter"],
+          "headline-xl": ["Inter"],
+          "body-lg": ["Inter"],
+          "headline-md": ["Inter"],
+          "headline-sm": ["Inter"],
+          "label-sm": ["Inter"],
+          "headline-xl-mobile": ["Inter"],
+          "body-sm": ["Inter"],
+          "headline-lg-mobile": ["Inter"],
+          "body-md": ["Inter"],
+          "label-md": ["Inter"]
+        },
+        "fontSize": {
+          "headline-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+          "headline-xl-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+        }
+      }
+    }
+  }
+</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe"><div class="h-16 px-space-lg flex items-center justify-between"><div class="flex items-center gap-3"><img alt="Minimalist real estate logo with a sleek house and checkmark roof icon, modern typography reading 'AuraEstates', deep navy and emerald green colors, flat 2D style." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XUzsp6QCXsb7w_09zDtDoeFXLMAlP7S-im8SVLmOpJgpagHBcHKO9gtPeZXZ13yNDDjNJNO8_3K3LRBgD0Gty5WFIgoNzFDQrEB30d7GmLkJfjQu9N4vTDpH6G4YJAG0XAIFM6rCdFCTUDZq75NgCSHz_605wS7R0GpEgGP6Is_A_sYGIZ1cCml26jHcEFeBfuTd7lSFkpwFeQzI4TDe3Kd72DvRNmok9B7JbGRSlvHDXnwO8qREmYEQ"/><span class="text-headline-sm font-headline font-bold tracking-tight text-on-surface">Home</span></div><div class="flex items-center gap-space-sm"><button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-space-lg pt-16 bg-surface flex-grow pb-24"><div class="flex flex-col w-full gap-space-lg pb-12">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center bg-surface-container-low rounded-full px-space-md py-3 shadow-sm">
+<span class="material-symbols-outlined text-outline text-[20px] mr-3">search</span>
+<input class="bg-transparent border-none outline-none w-full font-body-md text-on-surface placeholder:text-outline" placeholder="Search city, neighborhood, or address..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<div class="flex gap-space-sm overflow-x-auto no-scrollbar py-1">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md shrink-0 shadow-sm">All Estates</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0">Villas</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0">Penthouses</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0">Waterfront</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0">Modernist</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-on-surface">Metropolitan Hubs</h2>
+<span class="font-label-md text-secondary font-semibold">Explore all</span>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar pb-2">
+<div class="relative w-36 h-48 rounded-xl overflow-hidden shrink-0 flex flex-col justify-end p-3 shadow-sm bg-cover bg-center" data-alt="A breathtaking sunset skyline of Miami showing sleek modern high-rise luxury towers reflecting golden light across turquoise Biscayne Bay waters, ultra-luxury American real estate aesthetic, vibrant yet sophisticated tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCg0FACAqt_BBhmSc5R6Y7gOOGp8TbVxlOZgMCVdVvuW4gJJ-L_BE1ghI6qJoXepzUgHaeBSoyiTgMvBsSw8lYZbaVHQ7PE24PxgEYlf3Kvbweab_9uT22pqtBXjBZIjEKdzfaWziprZVa5nn2Q-z4oSgZyQxujf13eCb2v5BMDU7MqUaiknnkM9UDhap5WoQM6j47LDGvKuV9QACzlJ0frpjd3M0EDxwqUKmPPyg8GqgbwzcxNh5g')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<span class="relative z-10 font-headline-sm text-white">Miami</span>
+<span class="relative z-10 font-label-sm text-surface-dim">420+ Listings</span>
+</div>
+<div class="relative w-36 h-48 rounded-xl overflow-hidden shrink-0 flex flex-col justify-end p-3 shadow-sm bg-cover bg-center" data-alt="An iconic Manhattan skyline view at dusk with warm glowing skyscraper lights piercing the twilight sky, stylish luxury penthouse perspective, clean 2D minimalist real estate presentation style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAy4DQg3SUXfYkRdiBR9ZukabHy1EaNuX-VcZ23PoncM5Avk35HZndJSvtRirfx7HH0bzFuPlc8fnmJLpTYRTAsjo25OZAZf60SwBXPIXghCEYVi3T6lquJjln73GthnsOsrSOFhfmpFoxxxnsgMpb8QgoZz58znanN3Qt6XC1THBCtTT_MgP9wABbIDo37wWjP3FmKrm4YDA6S-feZp53cMytW78iU52UN8Vzrgaz-vJFd72N2qxc')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<span class="relative z-10 font-headline-sm text-white">New York</span>
+<span class="relative z-10 font-label-sm text-surface-dim">680+ Listings</span>
+</div>
+<div class="relative w-36 h-48 rounded-xl overflow-hidden shrink-0 flex flex-col justify-end p-3 shadow-sm bg-cover bg-center" data-alt="A majestic snow-capped luxury alpine chalet in Aspen Colorado surrounded by towering pine trees under a crisp blue daytime sky, high-end American mountain real estate." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKE2tyc4Ox2ERllH2lWcj-wC623fivOe6sZDFwJO-xa3q5s5g8ZuL-SsjFG9IYkOjIq6q4QJmaQscI-4lQcpgQAM0zjy-aIGVtEmrZvY_pXh4KTDKyuO-IRnlEeo5dDSeDGHWgyhATu4B9otiXcjRnDuk9ZY7lRNmp-Bv3zd1YBmV4KMdn_E_RXNv67LZEkhK4thEAChWwDt9OxB01t0QQfhK_cKmLdygbqvffTJTCtudhfG3naLY')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<span class="relative z-10 font-headline-sm text-white">Aspen</span>
+<span class="relative z-10 font-label-sm text-surface-dim">150+ Listings</span>
+</div>
+<div class="relative w-36 h-48 rounded-xl overflow-hidden shrink-0 flex flex-col justify-end p-3 shadow-sm bg-cover bg-center" data-alt="A sun-drenched architectural marvel home in the Hollywood Hills of Los Angeles overlooking the twinkling city lights and palm trees, crisp modernist aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEKtzdR7kavIxFOBH7tehwHxi2QazLmP0ZvZWgpgb89mmv7RDiMfB9TttAC0F4j-QVGWJTBNwP-V1uWZLHSrei47h8Zg5UngO4ISSu3t51xg6c2V87g5YDd5-KGapYIDKqJIye9ellx9tckPJYMzU4ZWYGnkilnHhf7N7qPlpBgGTOpZuidKcs71i5aFq1KxKV0YeKiNxrKb0pIrwZYecO1jenhPDChFBv-pWqWwdGudfR-OJhZfA')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<span class="relative z-10 font-headline-sm text-white">Los Angeles</span>
+<span class="relative z-10 font-label-sm text-surface-dim">510+ Listings</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-on-surface">Featured Estates</h2>
+<span class="font-label-md text-secondary font-semibold">Filter (3)</span>
+</div>
+<div class="flex flex-col gap-space-lg">
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative w-full h-64 bg-cover bg-center" data-alt="A striking contemporary waterfront mansion in Miami Beach featuring expansive floor-to-ceiling glass walls, a glowing infinity edge pool merging with the bay, pristine white exterior finishes, and luxury outdoor lounge seating under warm ambient lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvk3Chp-82judJPbNmbKEfTyEGSLPUPcjRHUNdAOzm9pGMLC89_YboxnVeUbqZFdtqLXk2SNfSkR1Jodf-M7gvL_lv35zWsxJp7ZSgYrG02xAqLkpjrHotJrwjxt_uCvSxKzeu_XO11UAMX1aBSvDRHnlZURMGxqAF4dh3mz3nmw6yZAEiXLCT7Gk5h9xQF8WWt7fD3TJZOxf6PfbyVf6kf9A5N3KJxxQgxvplQmP0LZyQR91EPK0')">
+<button class="absolute top-3 right-3 w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-secondary text-on-secondary px-3 py-1 rounded-full font-label-sm font-semibold shadow-sm">Exclusive</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-on-surface">The Glass Horizon Villa</h3>
+<p class="font-body-sm text-outline">Star Island, Miami Beach, FL</p>
+</div>
+<span class="font-headline-sm text-secondary font-bold">$14,850,000</span>
+</div>
+<div class="flex gap-4 pt-1 pb-2 border-t border-surface-container-high text-on-surface-variant font-label-md">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">king_bed</span> 6 Beds</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bathtub</span> 7 Baths</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> 8,420 sqft</div>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md font-semibold text-center shadow-sm">View Details</button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative w-full h-64 bg-cover bg-center" data-alt="A magnificent duplex penthouse overlooking Central Park in Manhattan New York, featuring soaring double-height glass windows, sleek dark minimalist interior design, polished hardwood floors, and warm ambient recessed lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxlXhXvYMAciRhG7vt1UTJZOPiVTXIwvImUaVjKsDUI7a2gLviBdaY7JU5L5eaaHho8F920x0UJl1aClrhZQOBRlRlOW0MrC-C8AqCEQpgPQol5Zdiph5aRyUcOKSfrP63lXAd8k9ev8eTcvGWSWqj8_R0bbAEXMvHx834zi4RLxMqr3NhGHgg9rtrwgws90jlg-fnTXtCoIYEJGZOf76VrEgXHyg4LMvV__hwxWbjxgNn1qEAzo4')">
+<button class="absolute top-3 right-3 w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-secondary text-on-secondary px-3 py-1 rounded-full font-label-sm font-semibold shadow-sm">Just Listed</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-on-surface">Central Park Sky Manor</h3>
+<p class="font-body-sm text-outline">Upper East Side, New York, NY</p>
+</div>
+<span class="font-headline-sm text-secondary font-bold">$22,500,000</span>
+</div>
+<div class="flex gap-4 pt-1 pb-2 border-t border-surface-container-high text-on-surface-variant font-label-md">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">king_bed</span> 4 Beds</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bathtub</span> 5.5 Baths</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> 5,900 sqft</div>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md font-semibold text-center shadow-sm">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-2">
+<h2 class="font-headline-md text-on-surface">Client Testimonials</h2>
+<div class="bg-surface-container-low rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">"AuraEstates delivered an unmatched level of discretion and elegance when we acquired our Miami residence. Absolutely seamless."</p>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-on-surface">JD</div>
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Jonathan Davenport</h4>
+<p class="font-label-sm text-outline">Tech Founder &amp; Homeowner</p>
+</div>
+</div>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl" data-active-classes="text-secondary bg-secondary-container/20"><div class="flex justify-around items-center h-20 px-space-md"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-xl transition-all text-secondary bg-secondary-container/20" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span class="text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="properties" href="#"><span class="material-symbols-outlined text-[24px]">apartment</span><span class="text-label-sm">Properties</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="saved" href="#"><span class="material-symbols-outlined text-[24px]">bookmark</span><span class="text-label-sm">Saved</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="profile-admin" href="#"><span class="material-symbols-outlined text-[24px]">admin_panel_settings</span><span class="text-label-sm">Profile</span></a></div></nav></body></html>
