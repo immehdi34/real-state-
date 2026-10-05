@@ -98,5 +98,23 @@ export const api = {
     });
     if (!res.ok) throw new Error('Failed to update Supabase configuration');
     return res.json();
+  },
+
+  // Contact Messages
+  async submitContact(contactData) {
+    const res = await fetch(`${API_BASE}/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(contactData),
+    });
+    if (!res.ok) throw new Error('Failed to send contact message');
+    return res.json();
+  },
+
+  async getMessages() {
+    const res = await fetch(`${API_BASE}/messages`);
+    if (!res.ok) throw new Error('Failed to fetch contact messages');
+    return res.json();
   }
 };
+

@@ -176,7 +176,7 @@ app.post('/api/config/supabase', async (req, res) => {
 // 1. GET /api/properties
 app.get('/api/properties', async (req, res) => {
   try {
-    const { search, city, property_type, minPrice, maxPrice, beds, sort, featured } = req.query;
+    const { search, city, property_type, minPrice, maxPrice, beds, sort, featured, sold } = req.query;
 
     if (getIsSupabaseConfigured()) {
       const sb = getSupabase();
@@ -184,6 +184,7 @@ app.get('/api/properties', async (req, res) => {
       if (search) query = query.or(`title.ilike.%${search}%,location.ilike.%${search}%,city.ilike.%${search}%`);
       if (city && city !== 'All') query = query.eq('city', city);
       if (property_type && property_type !== 'All') query = query.eq('property_type', property_type);
+      if (sold !== undefined && sold !== '') query = query.eq('sold', sold === 'true');
       if (minPrice) query = query.gte('price', Number(minPrice));
       if (maxPrice) query = query.lte('price', Number(maxPrice));
       if (beds && beds !== 'Any') query = query.gte('bedrooms', parseInt(beds));
@@ -202,7 +203,7 @@ app.get('/api/properties', async (req, res) => {
     }
 
     // Local DB fallback
-    const filtered = localDb.getProperties({ search, city, property_type, minPrice, maxPrice, beds, sort });
+    const filtered = localDb.getProperties({ search, city, property_type, minPrice, maxPrice, beds, sort, sold });
     res.json({ success: true, count: filtered.length, properties: filtered });
   } catch (err) {
     console.error('Error fetching properties:', err);
@@ -367,12 +368,56 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
+// 9. CONTACT MESSAGES
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, error: 'Name, email, and message are required.' });
+    }
+
+    if (getIsSupabaseConfigured()) {
+      const sb = getSupabase();
+      try {
+        const { data, error } = await sb.from('messages').insert([{ name, email, phone, message }]).select().single();
+        if (!error && data) {
+          return res.status(201).json({ success: true, message: 'Message sent successfully!', data });
+        }
+      } catch (sbErr) {
+        console.warn('Supabase message insert error:', sbErr.message);
+      }
+    }
+
+    const created = localDb.createMessage({ name, email, phone, message });
+    res.status(201).json({ success: true, message: 'Message sent successfully!', data: created });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/messages', async (req, res) => {
+  try {
+    if (getIsSupabaseConfigured()) {
+      const sb = getSupabase();
+      try {
+        const { data, error } = await sb.from('messages').select('*').order('created_at', { ascending: false });
+        if (!error && data) return res.json({ success: true, messages: data });
+      } catch (sbErr) {
+        console.warn('Supabase get messages error:', sbErr.message);
+      }
+    }
+    res.json({ success: true, messages: localDb.getMessages() });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Export app for Vercel serverless deployment
 export default app;
 
 // Listen if run directly
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`🚀 AuraEstates Express Server running on http://localhost:${PORT}`);
+    console.log(`🚀 ARCHERA Express Server running on http://localhost:${PORT}`);
   });
 }

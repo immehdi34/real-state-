@@ -1,6 +1,7 @@
 {
   "name": "aura-estates-fullstack",
   "version": "1.0.0",
+  "type": "module",
   "description": "Full-stack luxury real estate portal based on Google Stitch design, built with React.js, Express.js, and Supabase",
   "scripts": {
     "dev": "node backend/server.js",

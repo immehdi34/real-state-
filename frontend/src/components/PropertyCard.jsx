@@ -1,111 +1,118 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Bed, Bath, Maximize2, ArrowRight } from 'lucide-react';
 
-export default function PropertyCard({ property, onSelect }) {
-  const [isFavorite, setIsFavorite] = useState(false);
+export default function PropertyCard({ property }) {
+  if (!property) return null;
 
-  const toggleFavorite = (e) => {
-    e.stopPropagation();
-    setIsFavorite(!isFavorite);
-  };
+  const isLand = property.property_type?.toLowerCase() === 'land';
 
   return (
-    <div 
-      onClick={() => onSelect(property.id)}
-      className="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-slate-400 transition-colors duration-150 flex flex-col cursor-pointer"
-    >
-      {/* Image Container */}
-      <div className="relative w-full h-72 overflow-hidden bg-slate-100">
+    <article className="portfolio-card">
+      <div className="portfolio-card-img-wrap">
         <img
-          src={property.image}
+          src={property.image_url || '/images/hero_bg.jpg'}
           alt={property.title}
-          className="w-full h-full object-cover"
+          className="portfolio-card-img"
           loading="lazy"
         />
-        
-        {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          {property.status && (
-            <span className={`px-3 py-1 rounded-lg text-xs uppercase tracking-wider font-bold shadow-sm ${
-              property.status === 'Exclusive' 
-                ? 'bg-slate-900 text-white' 
-                : property.status === 'Open House'
-                ? 'bg-emerald-600 text-white'
-                : 'bg-amber-600 text-white'
-            }`}>
-              {property.status}
+
+        {/* Top Badges */}
+        <div style={{
+          position: 'absolute',
+          top: '14px',
+          left: '14px',
+          right: '14px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          pointerEvents: 'none'
+        }}>
+          <span className="badge-type">{property.property_type}</span>
+          {property.sold ? (
+            <span className="badge-sold">
+              SOLD {property.sold_date || ''}
+            </span>
+          ) : (
+            <span className="badge-available">
+              AVAILABLE
             </span>
           )}
-          {property.featured && (
-            <span className="bg-emerald-500/90 backdrop-blur-md text-slate-950 px-2.5 py-1 rounded-lg text-xs font-semibold shadow-sm">
-              Featured
-            </span>
-          )}
-        </div>
-
-        {/* Favorite Button */}
-        <button
-          onClick={toggleFavorite}
-          className={`absolute top-4 right-4 w-9 h-9 rounded-full backdrop-blur-md flex items-center justify-center transition-all ${
-            isFavorite 
-              ? 'bg-rose-500 text-white shadow-md' 
-              : 'bg-white/80 text-slate-700 hover:bg-white hover:text-rose-500'
-          }`}
-          title="Save to Favorites"
-        >
-          <span 
-            className="material-symbols-outlined text-[18px]" 
-            style={{ fontVariationSettings: isFavorite ? "'FILL' 1" : "'FILL' 0" }}
-          >
-            favorite
-          </span>
-        </button>
-
-        {/* Price Pill */}
-        <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/10 shadow-lg">
-          <span className="font-bold text-lg text-emerald-400">
-            {property.price_formatted || `$${Number(property.price).toLocaleString()}`}
-          </span>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-1 justify-between">
-        <div>
-          <h3 className="font-bold text-xl text-slate-900 group-hover:text-emerald-600 transition-colors mb-1 line-clamp-1">
+      <div className="portfolio-card-body">
+        <div className="portfolio-card-meta">
+          <span>{property.city}, {property.country || property.state}</span>
+          <span>{property.listed_at || 'EXCLUSIVE'}</span>
+        </div>
+
+        <h3 className="portfolio-card-title">
+          <Link to={`/properties/${property.id}`} style={{ color: '#ffffff' }}>
             {property.title}
-          </h3>
-          <p className="text-sm text-slate-500 flex items-center gap-1.5 mb-4">
-            <span className="material-symbols-outlined text-[16px] text-emerald-600">location_on</span>
+          </Link>
+        </h3>
+
+        <div className="portfolio-card-location" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <MapPin size={14} style={{ color: property.sold ? 'var(--color-red-sold)' : 'var(--color-accent)', flexShrink: 0 }} />
+          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {property.location}
-          </p>
+          </span>
         </div>
 
-        {/* Specs bar */}
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm font-medium text-slate-600">
-          <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[18px] text-slate-400">king_bed</span>
-            <span>{property.bedrooms} Beds</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[18px] text-slate-400">bathtub</span>
-            <span>{property.bathrooms} Baths</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[18px] text-slate-400">square_foot</span>
-            <span>{Number(property.sqft).toLocaleString()} sqft</span>
-          </div>
+        {/* Specs */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          margin: '14px 0 20px 0',
+          padding: '12px 0',
+          borderTop: '1px solid var(--color-border)',
+          borderBottom: '1px solid var(--color-border)',
+          fontSize: '12px',
+          color: 'var(--color-text-secondary)'
+        }}>
+          {!isLand && property.bedrooms > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Bed size={15} style={{ color: 'var(--color-accent)' }} />
+              <span>{property.bedrooms} Beds</span>
+            </div>
+          )}
+          {!isLand && property.bathrooms > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Bath size={15} style={{ color: 'var(--color-accent)' }} />
+              <span>{property.bathrooms} Baths</span>
+            </div>
+          )}
+          {property.sqft && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Maximize2 size={15} style={{ color: 'var(--color-accent)' }} />
+              <span>{isLand ? `${(property.sqft / 43560).toFixed(1)} Acres` : `${property.sqft.toLocaleString()} Sq Ft`}</span>
+            </div>
+          )}
         </div>
 
-        {/* Action button */}
-        <div className="pt-5">
-          <button 
-            className="w-full bg-slate-50 hover:bg-slate-900 hover:text-white text-slate-800 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-150 flex items-center justify-center gap-2 border border-slate-200"
+        {/* Footer: Price + Button */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+          <div>
+            <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'var(--color-text-muted)' }}>
+              {property.sold ? 'FINAL TRANSACTION' : 'OFFERING PRICE'}
+            </div>
+            <div className="portfolio-card-price">
+              {property.price_formatted}
+            </div>
+          </div>
+
+          <Link
+            to={`/properties/${property.id}`}
+            className="btn-outline-gold"
+            style={{ padding: '8px 16px', fontSize: '11px', letterSpacing: '1px' }}
           >
-            <span>Explore Residence</span>
-            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </button>
+            <span>VIEW</span>
+            <ArrowRight size={13} />
+          </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

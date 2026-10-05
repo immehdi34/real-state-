@@ -1,195 +1,232 @@
 import React, { useState } from 'react';
+import { X, Calendar, Clock, User, Mail, Phone, MessageSquare, CheckCircle } from 'lucide-react';
 import { api } from '../services/api';
 
 export default function ScheduleTourModal({ property, isOpen, onClose }) {
-  const [tourType, setTourType] = useState('In-Person Private Tour');
-  const [date, setDate] = useState('');
-  const [timeSlot, setTimeSlot] = useState('14:00 (Afternoon)');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    preferred_date: '',
+    preferred_time: '11:00 AM',
+    type: 'Private Showing',
+    message: ''
+  });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  if (!isOpen || !property) return null;
+  if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !email) {
-      setError('Name and Email are required.');
+    if (!formData.name || !formData.email) {
+      setError('Please provide your name and email address.');
       return;
     }
-    setError('');
-    setSubmitting(true);
+
     try {
+      setSubmitting(true);
+      setError('');
       await api.submitInquiry({
-        property_id: property.id,
-        property_title: property.title,
-        name,
-        email,
-        phone,
-        type: tourType,
-        preferred_date: date || new Date().toISOString().split('T')[0],
-        preferred_time: timeSlot,
-        message: message || `Interested in scheduling ${tourType} for ${property.title}`
+        property_id: property?.id || null,
+        property_title: property?.title || 'General Property Inquiry',
+        ...formData
       });
-      setSubmitted(true);
+      setSuccess(true);
     } catch (err) {
-      console.error(err);
-      setError('Could not connect to server. Please try again.');
+      setError(err.message || 'Unable to schedule viewing. Please try again.');
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn">
-      <div 
-        className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 relative"
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0, 0, 0, 0.85)',
+      backdropFilter: 'blur(8px)',
+      zIndex: 10000,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px'
+    }} onClick={onClose}>
+      <div
+        style={{
+          background: '#181818',
+          border: '1px solid var(--color-border-accent)',
+          width: '100%',
+          maxWidth: '540px',
+          maxHeight: '90vh',
+          overflowY: 'auto',
+          padding: '36px',
+          position: 'relative',
+          borderRadius: '2px'
+        }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors z-10"
+          style={{
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            color: 'var(--color-text-muted)',
+            padding: '6px'
+          }}
+          aria-label="Close modal"
         >
-          <span className="material-symbols-outlined text-[20px]">close</span>
+          <X size={20} />
         </button>
 
-        {submitted ? (
-          <div className="p-8 sm:p-10 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-              <span className="material-symbols-outlined text-[32px]">verified</span>
+        {success ? (
+          <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+            <div style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              background: 'rgba(232, 168, 73, 0.15)',
+              border: '2px solid var(--color-accent)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 20px auto'
+            }}>
+              <CheckCircle size={32} style={{ color: 'var(--color-accent)' }} />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900">Private Showing Requested</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Thank you, <strong className="text-slate-900">{name}</strong>. A dedicated senior advisor for <span className="font-semibold">{property.title}</span> will contact you at <strong className="text-slate-900">{email}</strong> within 2 hours to confirm your private itinerary.
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginBottom: '12px' }}>
+              Private Viewing Requested
+            </h3>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.6, marginBottom: '24px' }}>
+              Thank you, <strong style={{ color: '#fff' }}>{formData.name}</strong>. An Archera private acquisitions advisor will contact you within 24 hours to confirm credentials and schedule access.
             </p>
-            <div className="pt-4">
-              <button
-                onClick={onClose}
-                className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-semibold text-sm transition-colors"
-              >
-                Close Window
-              </button>
-            </div>
+            <button
+              onClick={() => { setSuccess(false); onClose(); }}
+              className="btn-gold"
+              style={{ width: '100%' }}
+            >
+              CLOSE
+            </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
-            <div>
-              <span className="text-xs uppercase tracking-wider font-bold text-emerald-600 block mb-1">Exclusive Appointment</span>
-              <h3 className="text-2xl font-bold text-slate-900">Schedule Private Showing</h3>
-              <p className="text-xs text-slate-500 mt-0.5 truncate">{property.title} — {property.location}</p>
-            </div>
+          <div>
+            <div className="section-subtitle">CONFIDENTIAL CONSULTATION</div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '26px', color: '#ffffff', marginBottom: '6px' }}>
+              Schedule Private Viewing
+            </h3>
+            {property && (
+              <div style={{
+                color: 'var(--color-accent)',
+                fontSize: '13px',
+                fontWeight: 600,
+                marginBottom: '24px',
+                paddingBottom: '12px',
+                borderBottom: '1px solid var(--color-border)'
+              }}>
+                {property.title} · {property.price_formatted}
+              </div>
+            )}
 
             {error && (
-              <div className="p-3 bg-red-50 text-red-700 rounded-xl text-xs font-medium border border-red-200">
+              <div style={{
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.4)',
+                color: '#f87171',
+                padding: '10px 14px',
+                fontSize: '13px',
+                marginBottom: '20px',
+                borderRadius: '2px'
+              }}>
                 {error}
               </div>
             )}
 
-            {/* Tour Type Radio Tabs */}
-            <div className="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl">
-              {['In-Person Private Tour', 'Live HD Walkthrough'].map((type) => (
-                <button
-                  type="button"
-                  key={type}
-                  onClick={() => setTourType(type)}
-                  className={`py-2 text-xs font-semibold rounded-lg transition-all ${
-                    tourType === type
-                      ? 'bg-white text-slate-900 shadow-sm'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="form-label">Full Name *</label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="form-input"
+                    placeholder="e.g. Lord Harrington / Eleanor Vance"
+                  />
+                </div>
+              </div>
 
-            {/* Date & Time Slot */}
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-medium text-slate-700 block mb-1">Preferred Date</label>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 block mb-1">Preferred Window</label>
-                <select
-                  value={timeSlot}
-                  onChange={(e) => setTimeSlot(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                >
-                  <option>10:00 AM (Morning)</option>
-                  <option>02:00 PM (Afternoon)</option>
-                  <option>05:30 PM (Sunset Twilight)</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Contact Details */}
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs font-medium text-slate-700 block mb-1">Full Name *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Harrison Wells"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-xs font-medium text-slate-700 block mb-1">Email Address *</label>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="form-group">
+                  <label className="form-label">Email Address *</label>
                   <input
                     type="email"
                     required
-                    placeholder="h.wells@domain.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="form-input"
+                    placeholder="name@domain.com"
                   />
                 </div>
-                <div>
-                  <label className="text-xs font-medium text-slate-700 block mb-1">Phone Number</label>
+                <div className="form-group">
+                  <label className="form-label">Phone Number</label>
                   <input
                     type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="form-input"
                     placeholder="+1 (555) 000-0000"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 block mb-1">Special Requests / Notes</label>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="form-group">
+                  <label className="form-label">Preferred Date</label>
+                  <input
+                    type="date"
+                    value={formData.preferred_date}
+                    onChange={(e) => setFormData({ ...formData, preferred_date: e.target.value })}
+                    className="form-input"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Preferred Window</label>
+                  <select
+                    value={formData.preferred_time}
+                    onChange={(e) => setFormData({ ...formData, preferred_time: e.target.value })}
+                    className="form-select"
+                  >
+                    <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                    <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                    <option value="Twilight / Sunset (4 PM - 7 PM)">Twilight / Sunset (4 PM - 7 PM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Special Inquiries or Accompaniment</label>
                 <textarea
-                  rows={2}
-                  placeholder="E.g. Traveling with private advisor, interested in architectural blueprints..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+                  rows={3}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="form-textarea"
+                  placeholder="Inquire regarding private airstrip, security clearance, or NDA..."
                 />
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-xl font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2"
-            >
-              <span className="material-symbols-outlined text-[18px]">calendar_month</span>
-              <span>{submitting ? 'Confirming Appointment...' : 'Confirm Itinerary Request'}</span>
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-gold"
+                style={{ width: '100%', marginTop: '12px' }}
+              >
+                {submitting ? 'CONFIRMING...' : 'REQUEST CONFIDENTIAL SHOWING'}
+              </button>
+            </form>
+          </div>
         )}
       </div>
     </div>

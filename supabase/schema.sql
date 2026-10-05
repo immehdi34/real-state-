@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS properties (
     property_type VARCHAR(100) NOT NULL, -- 'Modern Villa', 'Penthouse', 'Suburban Estate', 'Waterfront Estate', 'Architectural Loft'
     status VARCHAR(50) DEFAULT 'Exclusive', -- 'Exclusive', 'New', 'Open House', 'Price Reduction'
     featured BOOLEAN DEFAULT false,
+    sold BOOLEAN DEFAULT false,
+    sold_date VARCHAR(100),
     image TEXT NOT NULL,
     gallery TEXT[] DEFAULT '{}',
     description TEXT,
@@ -33,7 +35,18 @@ CREATE TABLE IF NOT EXISTS properties (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- 3. Inquiries & Tour Bookings Table
+-- 3. Contact Messages Table
+CREATE TABLE IF NOT EXISTS messages (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    message TEXT NOT NULL,
+    status VARCHAR(50) DEFAULT 'New',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- 4. Inquiries & Tour Bookings Table
 CREATE TABLE IF NOT EXISTS inquiries (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     property_id UUID REFERENCES properties(id) ON DELETE CASCADE,
@@ -48,7 +61,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- 4. Advisors / Agents Table
+-- 5. Advisors / Agents Table
 CREATE TABLE IF NOT EXISTS agents (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(255) NOT NULL,

@@ -1,94 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import LeftRail from './components/LeftRail';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import PropertiesPage from './pages/PropertiesPage';
 import PropertyDetailsPage from './pages/PropertyDetailsPage';
-import AdminDashboardPage from './pages/AdminDashboardPage';
-import { api } from './services/api';
+import ProjectsPage from './pages/ProjectsPage';
+import LatestPage from './pages/LatestPage';
+import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 
-export default function App() {
-  const [currentView, setCurrentView] = useState({ page: 'home' });
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchProperties = async () => {
-    try {
-      setLoading(true);
-      const res = await api.getProperties();
-      setProperties(res.properties || []);
-    } catch (err) {
-      console.error('Failed to fetch properties:', err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+// Helper component to scroll to top whenever route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    fetchProperties();
-  }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
 
-  const handleSelectProperty = (id) => {
-    setCurrentView({ page: 'details', id });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  return null;
+}
 
-  const selectedProperty = currentView.page === 'details'
-    ? properties.find(p => p.id === currentView.id || String(p.id) === String(currentView.id))
-    : null;
-
+export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-surface text-on-surface antialiased font-sans">
-      {/* Top Navigation */}
-      <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+    <BrowserRouter>
+      <ScrollToTop />
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--color-bg-dark)', color: 'var(--color-text)' }}>
+        {/* Fixed Header Navbar */}
+        <Navbar />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
-        {loading && properties.length === 0 ? (
-          <div className="pt-40 pb-20 flex flex-col items-center justify-center space-y-4">
-            <div className="w-12 h-12 border-4 border-slate-200 border-t-emerald-600 rounded-full animate-spin"></div>
-            <p className="text-slate-500 font-medium text-sm">Connecting to AuraEstates Database...</p>
-          </div>
-        ) : (
-          <>
-            {currentView.page === 'home' && (
-              <HomePage
-                properties={properties}
-                onSelectProperty={handleSelectProperty}
-                setCurrentView={setCurrentView}
-              />
-            )}
+        {/* 60px Left Vertical Fixed Rail for Desktop */}
+        <LeftRail />
 
-            {currentView.page === 'properties' && (
-              <PropertiesPage
-                properties={properties}
-                onSelectProperty={handleSelectProperty}
-                initialFilters={currentView.filter || {}}
-              />
-            )}
+        {/* Main Routed Page Content */}
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/properties" element={<PropertiesPage />} />
+            <Route path="/properties/:id" element={<PropertyDetailsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/latest" element={<LatestPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            {/* Catch-all redirect to Home */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
 
-            {currentView.page === 'details' && (
-              <PropertyDetailsPage
-                property={selectedProperty}
-                onBack={() => setCurrentView({ page: 'properties' })}
-              />
-            )}
-
-            {(currentView.page === 'admin' || currentView.page === 'post-property') && (
-              <AdminDashboardPage
-                properties={properties}
-                onRefresh={fetchProperties}
-                onSelectProperty={handleSelectProperty}
-              />
-            )}
-          </>
-        )}
-      </main>
-
-      {/* Bottom Footer */}
-      <Footer setCurrentView={setCurrentView} />
-    </div>
+        {/* Global Footer */}
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
