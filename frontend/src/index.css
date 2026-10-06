@@ -320,67 +320,67 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  background: rgba(18, 18, 18, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 1px rgba(255, 255, 255, 0.1);
-  padding: 14px 7px;
-  border-radius: 36px;
-  transition: border-color 0.3s ease;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
 }
 .icon-dock-inner:hover {
-  border-color: rgba(232, 168, 73, 0.3);
+  border-color: transparent;
 }
 
-/* Individual Icon Button */
+/* Individual Icon Button - Transparent floating without box background */
 .icon-dock-btn {
   position: relative;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: transparent;
-  border: 1px solid transparent;
-  color: var(--color-text-secondary);
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0;
+  box-shadow: none;
 }
 
 .dock-icon {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease, filter 0.3s ease;
 }
 
 /* Hover Effect on Icon */
 .icon-dock-btn:hover {
   color: #ffffff;
-  background: rgba(232, 168, 73, 0.12);
-  border-color: rgba(232, 168, 73, 0.35);
-  transform: scale(1.1);
+  background: transparent;
+  border: none;
+  transform: scale(1.2);
 }
 .icon-dock-btn:hover .dock-icon {
   color: var(--color-accent);
-  transform: scale(1.12);
+  filter: drop-shadow(0 0 8px rgba(232, 168, 73, 0.8));
 }
 
 /* Active State (Scrollspy Indicator) */
 .icon-dock-btn.active {
   color: var(--color-accent);
-  background: rgba(232, 168, 73, 0.18);
-  border-color: var(--color-accent);
-  box-shadow: 0 0 14px rgba(232, 168, 73, 0.4);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 .icon-dock-btn.active .dock-icon {
   color: var(--color-accent);
+  filter: drop-shadow(0 0 10px rgba(232, 168, 73, 0.95));
+  transform: scale(1.15);
 }
 
 .dock-active-indicator {
   position: absolute;
-  right: -5px;
+  right: -8px;
   top: 50%;
   transform: translateY(-50%);
   width: 4px;
