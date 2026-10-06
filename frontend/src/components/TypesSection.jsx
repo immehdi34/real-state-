@@ -38,25 +38,27 @@ export default function TypesSection() {
     <section className="types-section" id="services">
       <div className="archera-container with-left-rail">
         <div className="types-grid-wrapper">
-          {/* Left Experience Box: 6 YEARS EXPERIENCE WORKING with clear spacing */}
+          {/* Left Showcase Box: 50+ PROPERTIES SOLD */}
           <div className="types-experience-box">
             <div className="giant-number-row">
-              <span className="giant-number">6</span>
+              <span className="giant-number">
+                50<span style={{ fontSize: '0.65em', color: 'var(--color-accent)', marginLeft: '2px' }}>+</span>
+              </span>
             </div>
             
             <div className="experience-caption">
-              YEARS<br />
-              EXPERIENCE<br />
-              WORKING
+              PROPERTIES<br />
+              SOLD &amp;<br />
+              ACQUIRED
             </div>
 
             <p className="experience-desc">
-              Over six years delivering trusted real estate representation, private acquisitions, and high-value architectural advisory.
+              Over 50+ luxury estates and landmark architectural properties successfully sold to global buyers with proven confidentiality and record returns.
             </p>
 
             <div>
-              <Link to="/properties" className="btn-outline-gold" style={{ fontSize: '11px' }}>
-                VIEW ALL PROPERTIES
+              <Link to="/projects" className="btn-outline-gold" style={{ fontSize: '11px' }}>
+                VIEW SOLD PROPERTIES
               </Link>
             </div>
           </div>

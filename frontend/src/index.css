@@ -707,10 +707,11 @@ img {
 
 .giant-number {
   font-family: var(--font-heading);
-  font-size: clamp(120px, 12vw, 175px);
+  font-size: clamp(84px, 9vw, 130px);
   line-height: 0.88;
   color: var(--color-accent);
   display: block;
+  letter-spacing: -2px;
 }
 
 .experience-caption {
