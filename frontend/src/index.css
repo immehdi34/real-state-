@@ -1150,13 +1150,22 @@ img {
   flex-wrap: wrap;
   gap: 24px;
 }
-.footer-links a {
+.footer-links a,
+.footer-links .footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+  text-decoration: none;
 }
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links .footer-link-btn:hover {
   color: var(--color-accent);
 }
 

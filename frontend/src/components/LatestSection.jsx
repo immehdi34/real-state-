@@ -5,6 +5,8 @@ import { ArrowRight, MapPin, Sparkles, TrendingUp } from 'lucide-react';
 export default function LatestSection({ properties = [] }) {
   const [activeTab, setActiveTab] = useState('latest'); // 'latest' or 'expensive'
 
+  const [showAll, setShowAll] = useState(false);
+
   // Filter available properties
   const availableProps = properties.filter((p) => !p.sold);
 
@@ -14,7 +16,11 @@ export default function LatestSection({ properties = [] }) {
   // Most expensive properties (sorted by price descending)
   const expensiveList = [...availableProps].sort((a, b) => b.price - a.price).slice(0, 3);
 
-  const displayList = activeTab === 'latest' ? latestList : expensiveList;
+  const fullExpensiveList = [...availableProps].sort((a, b) => b.price - a.price);
+
+  const displayList = showAll
+    ? (activeTab === 'latest' ? availableProps : fullExpensiveList)
+    : (activeTab === 'latest' ? latestList : expensiveList);
 
   return (
     <section className="latest-section" id="latest-properties">
@@ -28,9 +34,14 @@ export default function LatestSection({ properties = [] }) {
             <div className="gold-divider" />
           </div>
 
-          <Link to="/properties" className="btn-outline-gold" style={{ fontSize: '11px' }}>
-            VIEW ALL PROPERTIES →
-          </Link>
+          <button
+            type="button"
+            onClick={() => setShowAll(!showAll)}
+            className="btn-outline-gold"
+            style={{ fontSize: '11px', cursor: 'pointer', background: 'transparent' }}
+          >
+            {showAll ? 'SHOW FEATURED (3) ↑' : `VIEW ALL PROPERTIES (${availableProps.length}) →`}
+          </button>
         </div>
 
         {/* Tab Toggle buttons */}

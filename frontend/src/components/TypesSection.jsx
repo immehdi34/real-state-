@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Key, Sparkles, Mountain, Building2 } from 'lucide-react';
+import { scrollToSection } from '../utils/navigation';
 
 export default function TypesSection() {
   const realEstateSolutions = [
@@ -57,9 +57,14 @@ export default function TypesSection() {
             </p>
 
             <div>
-              <Link to="/projects" className="btn-outline-gold" style={{ fontSize: '11px' }}>
+              <button
+                type="button"
+                onClick={() => scrollToSection('sold-projects')}
+                className="btn-outline-gold"
+                style={{ fontSize: '11px', cursor: 'pointer', background: 'transparent' }}
+              >
                 VIEW SOLD PROPERTIES
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -87,10 +92,15 @@ export default function TypesSection() {
                       <p className="type-card-desc">{item.desc}</p>
                     </div>
 
-                    <Link to={item.link} className="type-card-link">
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('latest-properties')}
+                      className="type-card-link"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
                       <span>Explore Services</span>
                       <ArrowRight size={14} />
-                    </Link>
+                    </button>
                   </div>
                 );
               })}

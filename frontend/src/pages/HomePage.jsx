@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ArrowRight, Compass, ShieldCheck, MapPin } from 'lucide-react';
 import ArcheraLogo from '../components/ArcheraLogo';
 import TypesSection from '../components/TypesSection';
@@ -8,10 +8,12 @@ import AboutSection from '../components/AboutSection';
 import LatestSection from '../components/LatestSection';
 import ContactSection from '../components/ContactSection';
 import { api } from '../services/api';
+import { scrollToSection } from '../utils/navigation';
 
-export default function HomePage() {
+export default function HomePage({ defaultSection }) {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     async function loadProperties() {
@@ -28,6 +30,17 @@ export default function HomePage() {
     }
     loadProperties();
   }, []);
+
+  // Handle auto-scroll on mount or route change to section
+  useEffect(() => {
+    const target = defaultSection || (location.hash ? location.hash.replace('#', '') : null);
+    if (target) {
+      const timer = setTimeout(() => {
+        scrollToSection(target);
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, [defaultSection, location.pathname, location.hash]);
 
   return (
     <div>
@@ -60,12 +73,22 @@ export default function HomePage() {
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
-              <Link to="/properties" className="btn-gold">
+              <button
+                type="button"
+                onClick={() => scrollToSection('latest-properties')}
+                className="btn-gold"
+                style={{ cursor: 'pointer', border: 'none' }}
+              >
                 EXPLORE PROPERTIES
-              </Link>
-              <Link to="/projects" className="btn-outline-gold">
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection('sold-projects')}
+                className="btn-outline-gold"
+                style={{ cursor: 'pointer', background: 'transparent' }}
+              >
                 VIEW SOLD PROJECTS
-              </Link>
+              </button>
             </div>
           </div>
         </div>

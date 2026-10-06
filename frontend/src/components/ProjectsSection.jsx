@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 import PropertyMap from './PropertyMap';
+import { scrollToSection } from '../utils/navigation';
 
 export default function ProjectsSection({ properties = [] }) {
   const soldProperties = properties.filter((p) => p.sold);
@@ -32,9 +32,14 @@ export default function ProjectsSection({ properties = [] }) {
             </p>
           </div>
 
-          <Link to="/projects" className="btn-outline-gold" style={{ fontSize: '11px' }}>
+          <button
+            type="button"
+            onClick={() => scrollToSection('sold-projects')}
+            className="btn-outline-gold"
+            style={{ fontSize: '11px', cursor: 'pointer', background: 'transparent' }}
+          >
             VIEW FULL SOLD PORTFOLIO →
-          </Link>
+          </button>
         </div>
 
         {/* Featured Sold Property Showcase (like the reference Spain Interior slider) */}

@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUp, MapPin, Phone, Mail } from 'lucide-react';
 import ArcheraLogo from './ArcheraLogo';
+import { scrollToSection } from '../utils/navigation';
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToSection('hero');
   };
 
   return (
@@ -77,13 +78,13 @@ export default function Footer() {
           marginBottom: '28px'
         }}>
           <div className="footer-links">
-            <Link to="/">Home</Link>
-            <Link to="/about">About Studio</Link>
-            <Link to="/properties">Properties</Link>
-            <Link to="/projects">Sold Portfolio</Link>
-            <Link to="/latest">Latest Arrivals</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/admin">Admin Portal</Link>
+            <button type="button" onClick={() => scrollToSection('hero')} className="footer-link-btn">Home</button>
+            <button type="button" onClick={() => scrollToSection('about-studio')} className="footer-link-btn">About Studio</button>
+            <button type="button" onClick={() => scrollToSection('latest-properties')} className="footer-link-btn">Properties</button>
+            <button type="button" onClick={() => scrollToSection('sold-projects')} className="footer-link-btn">Sold Portfolio</button>
+            <button type="button" onClick={() => scrollToSection('latest-properties')} className="footer-link-btn">Latest Arrivals</button>
+            <button type="button" onClick={() => scrollToSection('contact')} className="footer-link-btn">Contact</button>
+            <Link to="/admin" className="footer-link-btn">Admin Portal</Link>
           </div>
           <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
             Melbourne · Sydney · New York · Beverly Hills

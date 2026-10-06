@@ -1,21 +1,48 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import ArcheraLogo from './ArcheraLogo';
 import RightNavRail from './RightNavRail';
+import { scrollToSection } from '../utils/navigation';
 
 export default function Navbar() {
   const [rightNavOpen, setRightNavOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    setRightNavOpen(false);
+    const mainPaths = ['/', '/about', '/contact', '/services', '/properties', '/projects', '/latest'];
+    if (mainPaths.includes(location.pathname)) {
+      scrollToSection('hero');
+    } else {
+      navigate('/');
+    }
+  };
+
+  const handleInquireClick = () => {
+    setRightNavOpen(false);
+    const mainPaths = ['/', '/about', '/contact', '/services', '/properties', '/projects', '/latest'];
+    if (mainPaths.includes(location.pathname)) {
+      scrollToSection('contact');
+    } else {
+      navigate('/#contact');
+      setTimeout(() => {
+        scrollToSection('contact');
+      }, 150);
+    }
+  };
 
   return (
     <>
       <header className="archera-header">
         <div className="archera-container header-inner">
           {/* Brand Logo with Bespoke 2D Vector Archera Logo */}
-          <Link
-            to="/"
+          <a
+            href="#hero"
             className="header-logo"
-            onClick={() => setRightNavOpen(false)}
+            onClick={handleLogoClick}
             aria-label="Archera Real Estates Home"
           >
             <ArcheraLogo size={40} />
@@ -44,7 +71,7 @@ export default function Navbar() {
                 REAL ESTATES
               </div>
             </div>
-          </Link>
+          </a>
 
           {/* Right Header Elements: Phone, Inquire CTA, and Navigation Menu Toggle */}
           <div className="header-right-actions" style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
@@ -65,13 +92,14 @@ export default function Navbar() {
               <span>(+706) 898-0751</span>
             </a>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={handleInquireClick}
               className="btn-gold header-inquire-btn"
-              style={{ padding: '9px 18px', fontSize: '11px' }}
+              style={{ padding: '9px 18px', fontSize: '11px', cursor: 'pointer', border: 'none' }}
             >
               INQUIRE NOW
-            </Link>
+            </button>
 
             {/* Menu Trigger Button for Right-Side Vertical Navigation */}
             <button

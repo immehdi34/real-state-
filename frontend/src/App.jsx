@@ -14,12 +14,14 @@ const LatestPage = lazy(() => import('./pages/LatestPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 
-// Helper component to scroll to top whenever route changes
+// Helper component to scroll to top only for isolated subpages like /admin or /properties/:id
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (pathname.startsWith('/admin') || pathname.startsWith('/properties/')) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
   }, [pathname]);
 
   return null;
@@ -44,15 +46,17 @@ export default function App() {
             </div>
           }>
             <Routes>
+              {/* All section routes render the full HomePage with auto-scroll so the entire website is always scrollable */}
               <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/properties" element={<PropertiesPage />} />
+              <Route path="/about" element={<HomePage defaultSection="about-studio" />} />
+              <Route path="/services" element={<HomePage defaultSection="services" />} />
+              <Route path="/properties" element={<HomePage defaultSection="latest-properties" />} />
+              <Route path="/projects" element={<HomePage defaultSection="sold-projects" />} />
+              <Route path="/latest" element={<HomePage defaultSection="latest-properties" />} />
+              <Route path="/contact" element={<HomePage defaultSection="contact" />} />
               <Route path="/properties/:id" element={<PropertyDetailsPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/latest" element={<LatestPage />} />
-              <Route path="/contact" element={<ContactPage />} />
               <Route path="/admin" element={<AdminPage />} />
-              {/* Catch-all redirect to Home */}
+              {/* Catch-all redirect to full Home */}
               <Route path="*" element={<HomePage />} />
             </Routes>
           </Suspense>
