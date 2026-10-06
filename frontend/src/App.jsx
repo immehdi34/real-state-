@@ -5,8 +5,13 @@ import LeftRail from './components/LeftRail';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 
-// Code splitting / Lazy-loaded subpages
+// Code splitting / Lazy-loaded subpages for fast initial load
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const PropertiesPage = lazy(() => import('./pages/PropertiesPage'));
 const PropertyDetailsPage = lazy(() => import('./pages/PropertyDetailsPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const LatestPage = lazy(() => import('./pages/LatestPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Helper component to scroll to top only for isolated subpages like /admin or /properties/:id
