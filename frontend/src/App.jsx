@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LeftRail from './components/LeftRail';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import PropertiesPage from './pages/PropertiesPage';
-import PropertyDetailsPage from './pages/PropertyDetailsPage';
-import ProjectsPage from './pages/ProjectsPage';
-import LatestPage from './pages/LatestPage';
-import ContactPage from './pages/ContactPage';
-import AdminPage from './pages/AdminPage';
+
+// Code splitting / Lazy-loaded subpages for fast initial load
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const PropertiesPage = lazy(() => import('./pages/PropertiesPage'));
+const PropertyDetailsPage = lazy(() => import('./pages/PropertyDetailsPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const LatestPage = lazy(() => import('./pages/LatestPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Helper component to scroll to top whenever route changes
 function ScrollToTop() {
@@ -36,18 +38,24 @@ export default function App() {
 
         {/* Main Routed Page Content */}
         <main style={{ flex: 1 }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/properties" element={<PropertiesPage />} />
-            <Route path="/properties/:id" element={<PropertyDetailsPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/latest" element={<LatestPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            {/* Catch-all redirect to Home */}
-            <Route path="*" element={<HomePage />} />
-          </Routes>
+          <Suspense fallback={
+            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '32px', height: '32px', border: '2px solid rgba(232,168,73,0.2)', borderTopColor: 'var(--color-accent)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/properties" element={<PropertiesPage />} />
+              <Route path="/properties/:id" element={<PropertyDetailsPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/latest" element={<LatestPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+              {/* Catch-all redirect to Home */}
+              <Route path="*" element={<HomePage />} />
+            </Routes>
+          </Suspense>
         </main>
 
         {/* Global Footer */}

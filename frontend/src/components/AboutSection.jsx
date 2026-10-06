@@ -13,6 +13,8 @@ export default function AboutSection() {
               src="/images/about_bg.jpg"
               alt="Archera real estate architects reviewing blueprints and scale model"
               className="about-image"
+              loading="lazy"
+              decoding="async"
             />
             {/* Subtle floating badge */}
             <div style={{

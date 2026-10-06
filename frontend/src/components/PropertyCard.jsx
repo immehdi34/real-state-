@@ -15,6 +15,7 @@ export default function PropertyCard({ property }) {
           alt={property.title}
           className="portfolio-card-img"
           loading="lazy"
+          decoding="async"
         />
 
         {/* Top Badges */}

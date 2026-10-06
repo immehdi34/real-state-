@@ -53,6 +53,8 @@ export default function AboutPage() {
               <img
                 src="/images/about_bg.jpg"
                 alt="Archera Team"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '460px', objectFit: 'cover', borderRadius: '2px', border: '1px solid var(--color-border)' }}
               />
             </div>
@@ -104,6 +106,8 @@ export default function AboutPage() {
                 <img
                   src={person.image}
                   alt={person.name}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '320px', objectFit: 'cover' }}
                 />
                 <div style={{ padding: '24px' }}>
