@@ -18,7 +18,7 @@ export default function RightNavRail({ isOpen, onClose }) {
     { id: 'admin', label: 'ADMIN', icon: ShieldCheck, isRoute: true, route: '/admin' }
   ];
 
-  // Dynamic Scrollspy: Tracks which section is currently on screen
+  // Dynamic Scrollspy: Tracks which section is currently locked in view via IntersectionObserver
   useEffect(() => {
     const mainPaths = ['/', '/about', '/contact', '/services', '/properties', '/projects', '/latest'];
     if (!mainPaths.includes(location.pathname)) {
@@ -27,28 +27,34 @@ export default function RightNavRail({ isOpen, onClose }) {
     }
 
     const sectionIds = ['hero', 'services', 'sold-projects', 'about-studio', 'latest-properties', 'contact'];
+    const container = document.querySelector('.scroll-container');
 
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 200; // offset for fixed header
-
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPos >= top) {
-            setActiveSection(id);
-            return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id === 'footer') {
+              setActiveSection('contact');
+            } else if (sectionIds.includes(id)) {
+              setActiveSection(id);
+            }
           }
-        }
+        });
+      },
+      {
+        root: container || null,
+        threshold: 0.5
       }
-      setActiveSection('hero');
-    };
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const allObservedIds = [...sectionIds, 'footer'];
+    allObservedIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => observer.disconnect();
   }, [location.pathname]);
 
   const handleItemClick = (item) => {

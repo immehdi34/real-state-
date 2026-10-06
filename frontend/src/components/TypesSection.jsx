@@ -35,7 +35,7 @@ export default function TypesSection() {
   ];
 
   return (
-    <section className="types-section" id="services">
+    <section className="types-section snap-section h-screen w-full flex-shrink-0 snap-start snap-always" id="services">
       <div className="archera-container with-left-rail">
         <div className="types-grid-wrapper">
           {/* Left Showcase Box: 50+ PROPERTIES SOLD */}
@@ -70,12 +70,12 @@ export default function TypesSection() {
 
           {/* Right Heading + Solutions Cards */}
           <div>
-            <div style={{ marginBottom: '40px' }}>
+            <div style={{ marginBottom: '24px' }}>
               <span className="section-subtitle">SERVICES</span>
-              <h2 className="section-title">
+              <h2 className="section-title" style={{ fontSize: 'clamp(28px, 3.2vw, 42px)', marginBottom: '12px' }}>
                 We Provide Top-Tier Real Estate Designs
               </h2>
-              <div className="gold-divider" />
+              <div className="gold-divider" style={{ margin: '14px 0' }} />
             </div>
 
             <div className="types-cards-grid">

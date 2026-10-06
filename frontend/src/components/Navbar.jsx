@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="archera-header">
+      <header className="archera-header fixed top-0 w-full z-50">
         <div className="archera-container header-inner">
           {/* Brand Logo with Bespoke 2D Vector Archera Logo */}
           <a

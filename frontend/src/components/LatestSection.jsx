@@ -23,22 +23,22 @@ export default function LatestSection({ properties = [] }) {
     : (activeTab === 'latest' ? latestList : expensiveList);
 
   return (
-    <section className="latest-section" id="latest-properties">
+    <section className="latest-section snap-section h-screen w-full flex-shrink-0 snap-start snap-always" id="latest-properties">
       <div className="archera-container with-left-rail">
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', gap: '20px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px', gap: '16px' }}>
           <div>
-            <span className="section-subtitle">CURATED COLLECTIONS</span>
-            <h2 className="section-title">
+            <span className="section-subtitle" style={{ marginBottom: '6px' }}>CURATED COLLECTIONS</span>
+            <h2 className="section-title" style={{ fontSize: 'clamp(28px, 3.2vw, 42px)', marginBottom: '8px' }}>
               Our Properties
             </h2>
-            <div className="gold-divider" />
+            <div className="gold-divider" style={{ margin: '8px 0 0 0' }} />
           </div>
 
           <button
             type="button"
             onClick={() => setShowAll(!showAll)}
             className="btn-outline-gold"
-            style={{ fontSize: '11px', cursor: 'pointer', background: 'transparent' }}
+            style={{ fontSize: '11px', cursor: 'pointer', background: 'transparent', padding: '9px 18px' }}
           >
             {showAll ? 'SHOW FEATURED (3) ↑' : `VIEW ALL PROPERTIES (${availableProps.length}) →`}
           </button>

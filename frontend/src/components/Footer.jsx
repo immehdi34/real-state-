@@ -4,13 +4,13 @@ import { ArrowUp, MapPin, Phone, Mail } from 'lucide-react';
 import ArcheraLogo from './ArcheraLogo';
 import { scrollToSection } from '../utils/navigation';
 
-export default function Footer() {
+export default function Footer({ isSnapSection = false }) {
   const scrollToTop = () => {
     scrollToSection('hero');
   };
 
   return (
-    <footer className="archera-footer">
+    <footer className={`archera-footer ${isSnapSection ? 'snap-section archera-footer-snap h-screen w-full flex-shrink-0 snap-start snap-always' : ''}`} id="footer">
       <div className="archera-container with-left-rail">
         <div className="footer-top">
           {/* Brand & Address */}

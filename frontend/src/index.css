@@ -59,30 +59,79 @@ html {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
   background-color: var(--color-bg-dark);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
+  overflow: hidden;
+  height: 100%;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* =========================================================
+   FULL-PAGE SCROLL SNAPPING (BOOK-PAGE NATURAL LOCK EFFECT)
+   ========================================================= */
+
+/* Main Full-Page Scroll Container */
+.scroll-container {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  /* Hide default scrollbars for seamless book-page feel */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
 }
-::-webkit-scrollbar-track {
-  background: #EDE8DF;
+
+.scroll-container::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+  width: 0 !important;
+  height: 0 !important;
 }
-::-webkit-scrollbar-thumb {
-  background: #D4CBBD;
-  border-radius: 3px;
+
+/* Full-Page Snap Sections */
+.snap-section {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding-top: var(--header-height);
+  padding-bottom: 24px;
+  overflow: hidden;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+
+/* Allow responsive scrolling if screen height is very short or on mobile */
+@media (max-width: 900px), (max-height: 720px) {
+  .snap-section {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start !important;
+    padding-top: calc(var(--header-height) + 16px) !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* Hide scrollbars across whole document */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Typography Helpers */
@@ -575,13 +624,169 @@ img {
 /* Hero Section */
 .hero-section {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
   padding-top: var(--header-height);
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   SNAP SECTION OVERRIDES (PERFECT 100VH FIT)
+   ========================================================= */
+.types-section.snap-section,
+.projects-section.snap-section,
+.about-section.snap-section,
+.latest-section.snap-section,
+.contact-section.snap-section {
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  padding-top: var(--header-height);
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.archera-footer.snap-section {
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  padding-top: var(--header-height);
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--color-bg-section);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Projects Split Layout (Left: Sold Showcase, Right: Interactive Map) */
+.projects-split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .projects-split-layout {
+    grid-template-columns: 420px 1fr;
+    gap: 24px;
+    height: 460px;
+  }
+}
+
+.projects-sold-showcase {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  min-height: 380px;
+}
+
+.sold-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(24, 16, 12, 0.94) 0%, rgba(24, 16, 12, 0.6) 45%, rgba(24, 16, 12, 0.15) 100%);
+  z-index: 1;
+}
+
+.sold-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 26px 22px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.projects-map-box {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+/* Compact Type Cards in Snap Mode */
+@media (min-width: 1024px) {
+  .types-section.snap-section .type-card {
+    padding: 22px 24px;
+  }
+  .types-section.snap-section .type-card-desc {
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .types-section.snap-section .type-card-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .types-section.snap-section .giant-number {
+    font-size: clamp(64px, 7vw, 96px);
+  }
+  .types-section.snap-section .types-cards-grid {
+    gap: 16px;
+  }
+}
+
+/* Compact Latest Cards in Snap Mode */
+@media (min-width: 1024px) {
+  .latest-section.snap-section .portfolio-card-img-wrap {
+    height: 170px;
+  }
+  .latest-section.snap-section .portfolio-card-body {
+    padding: 18px;
+  }
+  .latest-section.snap-section .portfolio-card-title {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .latest-section.snap-section .tab-buttons {
+    margin-bottom: 20px;
+  }
+}
+
+/* Compact About in Snap Mode */
+@media (min-width: 1024px) {
+  .about-section.snap-section .about-image {
+    height: 390px;
+  }
+  .about-section.snap-section .stats-grid {
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+}
+
+/* Compact Contact in Snap Mode */
+@media (min-width: 1024px) {
+  .contact-section.snap-section .contact-form-block {
+    padding: 26px 30px;
+  }
+  .contact-section.snap-section .form-group {
+    margin-bottom: 14px;
+  }
 }
 
 .hero-overlay {

@@ -26,7 +26,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="about-section" id="about-studio">
+    <section className="about-section snap-section h-screen w-full flex-shrink-0 snap-start snap-always" id="about-studio">
       <div className="archera-container with-left-rail">
         <div className="about-grid">
           {/* Left image of architecture & real estate team */}
@@ -67,16 +67,16 @@ export default function AboutSection() {
           {/* Right narrative content */}
           <div>
             <span className="section-subtitle">ABOUT ARCHERA</span>
-            <h2 className="section-title">
+            <h2 className="section-title" style={{ fontSize: 'clamp(28px, 3.2vw, 42px)', marginBottom: '12px' }}>
               We curate extraordinary living spaces
             </h2>
-            <div className="gold-divider" />
+            <div className="gold-divider" style={{ margin: '12px 0 16px 0' }} />
 
-            <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: 1.8, marginBottom: '18px' }}>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.7, marginBottom: '12px' }}>
               Founded in 2018, Archera operates at the intersection of master architecture and premier real estate representation. We serve sovereign wealth funds, private families, and discerning individuals seeking exceptional residential compounds, coastal development lands, and urban penthouses.
             </p>
 
-            <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: 1.8, marginBottom: '28px' }}>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.7, marginBottom: '20px' }}>
               Unlike conventional real estate agencies, our partners have deep backgrounds in architectural design, zoning valuation, and historical preservation. Every estate in our portfolio is vetted for spatial harmony, structural integrity, and enduring capital value.
             </p>
 

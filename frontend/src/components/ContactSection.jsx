@@ -34,7 +34,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="contact-section" id="contact" style={{ backgroundImage: "url('/images/contact_bg.jpg')" }}>
+    <section className="contact-section snap-section h-screen w-full flex-shrink-0 snap-start snap-always" id="contact" style={{ backgroundImage: "url('/images/contact_bg.jpg')" }}>
       <div className="contact-overlay" />
       <div className="archera-container with-left-rail" style={{ position: 'relative', zIndex: 2 }}>
         <div className="contact-inner">
@@ -55,7 +55,7 @@ export default function ContactSection() {
             </div>
 
             <div className="contact-phone">
-              <a href="tel:+7068980751" style={{ color: '#ffffff', fontWeight: 600 }}>
+              <a href="tel:+7068980751" style={{ color: 'var(--color-text)', fontWeight: 600 }}>
                 (+706) 898-0751
               </a>
             </div>
@@ -90,7 +90,7 @@ export default function ContactSection() {
                 borderRadius: '2px'
               }}>
                 <CheckCircle size={36} style={{ color: 'var(--color-accent)', margin: '0 auto 12px auto' }} />
-                <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '8px' }}>
+                <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '8px' }}>
                   Message Received
                 </h4>
                 <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '16px' }}>

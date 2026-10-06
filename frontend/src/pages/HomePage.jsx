@@ -7,6 +7,7 @@ import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import LatestSection from '../components/LatestSection';
 import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 import { api } from '../services/api';
 import { scrollToSection } from '../utils/navigation';
 
@@ -37,16 +38,21 @@ export default function HomePage({ defaultSection }) {
     if (target) {
       const timer = setTimeout(() => {
         scrollToSection(target);
-      }, 120);
+      }, 150);
       return () => clearTimeout(timer);
     }
   }, [defaultSection, location.pathname, location.hash]);
 
   return (
-    <div>
+    <main
+      className="scroll-container h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+      id="scroll-container"
+      tabIndex={0}
+      style={{ outline: 'none' }}
+    >
       {/* 1. HERO SECTION (ARCHERA REAL ESTATES / PREMIUM PROPERTIES) */}
       <section
-        className="hero-section"
+        className="hero-section snap-section h-screen w-full flex-shrink-0 snap-start snap-always"
         id="hero"
         style={{ backgroundImage: "url('/images/hero_bg.jpg')" }}
       >
@@ -106,8 +112,11 @@ export default function HomePage({ defaultSection }) {
       {/* 5. LATEST SECTION (Our Properties / Latest Properties) */}
       <LatestSection properties={properties} />
 
-      {/* 7. CONTACT SECTION (Let's grab a coffee and start a conversation) */}
+      {/* 6. CONTACT SECTION (Let's grab a coffee and start a conversation) */}
       <ContactSection />
-    </div>
+
+      {/* 7. ARCHITECTURAL CLOSING & FOOTER (Snap Page 7) */}
+      <Footer isSnapSection={true} />
+    </main>
   );
 }
