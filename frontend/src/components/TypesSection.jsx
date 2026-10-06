@@ -66,7 +66,7 @@ export default function TypesSection() {
             <div style={{ marginBottom: '40px' }}>
               <span className="section-subtitle">OUR EXPERTISE</span>
               <h2 className="section-title">
-                We Provide Top-Tier Real Estate Solutions
+                We Provide Top-Tier Real Estate Designs
               </h2>
               <div className="gold-divider" />
             </div>
