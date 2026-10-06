@@ -29,7 +29,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '120px 20px', textAlign: 'center', color: '#fff', background: '#141414', minHeight: '100vh' }}>
+        <div style={{ padding: '120px 20px', textAlign: 'center', color: 'var(--color-text)', background: 'var(--color-bg-dark)', minHeight: '100vh' }}>
           <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)', marginBottom: '16px' }}>
             Archera Real Estates
           </h2>

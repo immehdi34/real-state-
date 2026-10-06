@@ -8,7 +8,7 @@ const melbourneIcon = L.divIcon({
   className: 'custom-map-pin',
   html: `
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <div style="background: #e8a849; color: #141414; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 2px 6px; border-radius: 2px; margin-bottom: 2px; box-shadow: 0 2px 8px rgba(232, 168, 73, 0.6); text-transform: uppercase;">HQ</div>
+      <div style="background: #C5A059; color: #FFFFFF; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 2px 6px; border-radius: 2px; margin-bottom: 2px; box-shadow: 0 2px 8px rgba(197, 160, 89, 0.6); text-transform: uppercase;">HQ</div>
       <div class="pin-marker pin-available">
         <div class="pin-inner-dot"></div>
       </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
             {/* Left Info Column */}
             <div>
               <span className="section-subtitle">MELBOURNE HEADQUARTERS</span>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: '#ffffff', marginBottom: '20px' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: 'var(--color-text)', marginBottom: '20px' }}>
                 Private Advisory Office
               </h2>
 
@@ -89,7 +89,7 @@ export default function ContactPage() {
                     <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--color-text-muted)' }}>
                       PHYSICAL ADDRESS
                     </div>
-                    <div style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text)', marginTop: '4px' }}>
                       69 Queen St, Melbourne<br />Australia
                     </div>
                   </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--color-text-muted)' }}>
                       DIRECT TELEPHONE
                     </div>
-                    <div style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', marginTop: '4px' }}>
+                    <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--color-text)', marginTop: '4px' }}>
                       <a href="tel:+7068980751" style={{ color: 'inherit' }}>(+706) 898-0751</a>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
                   borderRadius: '2px'
                 }}>
                   <CheckCircle size={36} style={{ color: 'var(--color-accent)', margin: '0 auto 12px auto' }} />
-                  <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '8px' }}>
+                  <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '8px' }}>
                     Inquiry Dispatched
                   </h4>
                   <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '16px' }}>
@@ -278,12 +278,12 @@ export default function ContactPage() {
         <div className="archera-container with-left-rail">
           <div style={{ marginBottom: '20px' }}>
             <span className="section-subtitle">FIND US IN MELBOURNE</span>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '26px', color: '#ffffff' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '26px', color: 'var(--color-text)' }}>
               69 Queen St, Melbourne, VIC 3000
             </h3>
           </div>
 
-          <div style={{ height: '420px', width: '100%', borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+          <div style={{ height: '420px', width: '100%', borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)' }}>
             <MapContainer
               center={[-37.8174, 144.9620]}
               zoom={15}
@@ -291,16 +291,16 @@ export default function ContactPage() {
               style={{ height: '100%', width: '100%' }}
             >
               <TileLayer
-                attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                attribution='&copy; Google Maps'
+                url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                 maxZoom={19}
               />
               <Marker position={[-37.8174, 144.9620]} icon={melbourneIcon}>
                 <Popup>
-                  <div style={{ color: '#fff', padding: '6px' }}>
+                  <div style={{ color: 'var(--color-text)', padding: '6px' }}>
                     <strong style={{ color: 'var(--color-accent)', fontSize: '13px' }}>ARCHERA HQ</strong><br />
                     69 Queen St, Melbourne, Australia<br />
-                    <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>(+706) 898-0751</span>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-secondary)' }}>(+706) 898-0751</span>
                   </div>
                 </Popup>
               </Marker>

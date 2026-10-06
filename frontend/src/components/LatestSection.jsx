@@ -90,7 +90,7 @@ export default function LatestSection({ properties = [] }) {
                 </div>
 
                 <h3 className="portfolio-card-title">
-                  <Link to={`/properties/${item.id}`} style={{ color: '#ffffff' }}>
+                  <Link to={`/properties/${item.id}`} style={{ color: 'var(--color-text)' }}>
                     {item.title}
                   </Link>
                 </h3>

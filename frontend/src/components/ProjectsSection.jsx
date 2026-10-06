@@ -119,14 +119,15 @@ export default function ProjectsSection({ properties = [] }) {
 
         {/* Interactive Location Map with RED MARKERS for sold items */}
         <div style={{
-          background: 'var(--color-bg-dark)',
+          background: 'var(--color-bg-card)',
           border: '1px solid var(--color-border)',
+          boxShadow: 'var(--shadow-card)',
           padding: '24px',
           borderRadius: '2px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <div>
-              <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: '#ffffff' }}>
+              <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--color-text)' }}>
                 Global Location Map
               </h4>
               <p style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>

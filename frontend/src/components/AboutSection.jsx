@@ -43,8 +43,9 @@ export default function AboutSection() {
               position: 'absolute',
               bottom: '24px',
               left: '24px',
-              background: 'rgba(20, 20, 20, 0.94)',
+              background: 'var(--color-bg-card)',
               border: '1px solid var(--color-border-accent)',
+              boxShadow: 'var(--shadow-card)',
               padding: '16px 20px',
               display: 'flex',
               alignItems: 'center',
@@ -56,7 +57,7 @@ export default function AboutSection() {
                 <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   RECOGNIZED EXCELLENCE
                 </div>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text)' }}>
                   Top Luxury Brokerage 2025
                 </div>
               </div>
@@ -115,7 +116,7 @@ export default function AboutSection() {
           <div style={{ marginTop: '56px', paddingTop: '40px', borderTop: '1px solid var(--color-border)' }}>
             <div style={{ marginBottom: '32px' }}>
               <span className="section-subtitle">EXECUTIVE LEADERSHIP</span>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: '#ffffff' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: 'var(--color-text)' }}>
                 Senior Partners & Advisory Board
               </h3>
             </div>
@@ -131,7 +132,7 @@ export default function AboutSection() {
                     style={{ width: '100%', height: '280px', objectFit: 'cover' }}
                   />
                   <div style={{ padding: '22px' }}>
-                    <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '19px', color: '#ffffff', marginBottom: '4px' }}>
+                    <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '19px', color: 'var(--color-text)', marginBottom: '4px' }}>
                       {person.name}
                     </h4>
                     <div style={{ color: 'var(--color-accent)', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '10px' }}>

@@ -48,7 +48,7 @@ export default function PropertyDetailsPage() {
   if (error || !property) {
     return (
       <div style={{ paddingTop: '160px', paddingBottom: '160px', textAlign: 'center', background: 'var(--color-bg-dark)' }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '16px' }}>{error || 'Estate Not Found'}</h2>
+        <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-text)', marginBottom: '16px' }}>{error || 'Estate Not Found'}</h2>
         <Link to="/properties" className="btn-gold">RETURN TO COLLECTION</Link>
       </div>
     );
@@ -150,7 +150,7 @@ export default function PropertyDetailsPage() {
             {/* Left Column: Title, Specs, Description, Amenities, Map */}
             <div style={{ gridColumn: 'span 2' }}>
               <span className="section-subtitle">{property.city} · {property.country || property.state}</span>
-              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(32px, 4vw, 48px)', color: '#ffffff', marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(32px, 4vw, 48px)', color: 'var(--color-text)', marginBottom: '12px', lineHeight: 1.15 }}>
                 {property.title}
               </h1>
 
@@ -167,6 +167,7 @@ export default function PropertyDetailsPage() {
                 padding: '24px',
                 background: 'var(--color-bg-card)',
                 border: '1px solid var(--color-border)',
+                boxShadow: 'var(--shadow-card)',
                 borderRadius: '2px',
                 marginBottom: '40px'
               }}>
@@ -184,7 +185,7 @@ export default function PropertyDetailsPage() {
                     <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                       BEDROOMS
                     </div>
-                    <div style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text)', marginTop: '4px' }}>
                       {property.bedrooms || '—'}
                     </div>
                   </div>
@@ -195,7 +196,7 @@ export default function PropertyDetailsPage() {
                     <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                       BATHROOMS
                     </div>
-                    <div style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text)', marginTop: '4px' }}>
                       {property.bathrooms || '—'}
                     </div>
                   </div>
@@ -205,7 +206,7 @@ export default function PropertyDetailsPage() {
                   <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                     TOTAL AREA
                   </div>
-                  <div style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text)', marginTop: '4px' }}>
                     {isLand ? `${(property.sqft / 43560).toFixed(1)} Acres` : `${property.sqft?.toLocaleString()} Sq Ft`}
                   </div>
                 </div>
@@ -222,7 +223,7 @@ export default function PropertyDetailsPage() {
 
               {/* Narrative Description */}
               <div style={{ marginBottom: '40px' }}>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginBottom: '16px' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)', marginBottom: '16px' }}>
                   Architectural Overview
                 </h3>
                 <p style={{ color: 'var(--color-text-secondary)', fontSize: '16px', lineHeight: 1.8, marginBottom: '16px' }}>
@@ -233,13 +234,13 @@ export default function PropertyDetailsPage() {
               {/* Amenities */}
               {property.amenities && property.amenities.length > 0 && (
                 <div style={{ marginBottom: '48px' }}>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginBottom: '20px' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)', marginBottom: '20px' }}>
                     Estate Features & Amenities
                   </h3>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
                     {property.amenities.map((item, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#ffffff', fontSize: '14px' }}>
-                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(232, 168, 73, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-text)', fontSize: '14px' }}>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(197, 160, 89, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Check size={12} style={{ color: 'var(--color-accent)' }} />
                         </div>
                         <span>{item}</span>
@@ -253,7 +254,7 @@ export default function PropertyDetailsPage() {
               {property.latitude && property.longitude && (
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff' }}>
+                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)' }}>
                       Estate Location
                     </h3>
                     {property.sold ? (
@@ -278,13 +279,14 @@ export default function PropertyDetailsPage() {
               <div style={{
                 background: 'var(--color-bg-card)',
                 border: '1px solid var(--color-border-accent)',
+                boxShadow: 'var(--shadow-card)',
                 padding: '36px',
                 borderRadius: '2px',
                 position: 'sticky',
                 top: '120px'
               }}>
                 <div className="section-subtitle">PRIVATE ADVISOR</div>
-                <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: '#ffffff', marginBottom: '6px' }}>
+                <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: 'var(--color-text)', marginBottom: '6px' }}>
                   Victoria Sterling
                 </h4>
                 <div style={{ color: 'var(--color-accent)', fontSize: '12px', fontWeight: 600, marginBottom: '20px' }}>

@@ -61,7 +61,7 @@ export default function AboutPage() {
 
             <div>
               <span className="section-subtitle">OUR PHILOSOPHY</span>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '36px', color: '#ffffff', marginBottom: '20px' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '36px', color: 'var(--color-text)', marginBottom: '20px' }}>
                 Architecture As Lasting Capital
               </h2>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: 1.8, marginBottom: '20px' }}>
@@ -111,7 +111,7 @@ export default function AboutPage() {
                   style={{ width: '100%', height: '320px', objectFit: 'cover' }}
                 />
                 <div style={{ padding: '24px' }}>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '6px' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '6px' }}>
                     {person.name}
                   </h3>
                   <div style={{ color: 'var(--color-accent)', fontSize: '12px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>

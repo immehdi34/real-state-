@@ -56,7 +56,7 @@ export default function LatestPage() {
             <Sparkles size={20} style={{ color: 'var(--color-accent)' }} />
             <span className="section-subtitle" style={{ margin: 0 }}>NEW TO MARKET</span>
           </div>
-          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: '#ffffff', marginBottom: '32px' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: 'var(--color-text)', marginBottom: '32px' }}>
             Latest Real Estate Acquisitions
           </h2>
 
@@ -75,7 +75,7 @@ export default function LatestPage() {
             <TrendingUp size={20} style={{ color: 'var(--color-accent)' }} />
             <span className="section-subtitle" style={{ margin: 0 }}>PINNACLE ASSETS</span>
           </div>
-          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: '#ffffff', marginBottom: '32px' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '32px', color: 'var(--color-text)', marginBottom: '32px' }}>
             Highest Valuation & Trophy Properties
           </h2>
 

@@ -18,7 +18,7 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
               <ArcheraLogo size={36} />
               <div>
-                <span style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', letterSpacing: '1px', color: '#ffffff', display: 'block', lineHeight: 1 }}>
+                <span style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', letterSpacing: '1px', color: 'var(--color-text)', display: 'block', lineHeight: 1 }}>
                   ARCHERA
                 </span>
                 <span style={{ fontSize: '9px', letterSpacing: '3px', color: 'var(--color-accent)', textTransform: 'uppercase', fontWeight: 700, marginTop: '2px', display: 'block' }}>
@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* Quick Contact & Office */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ffffff' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-text)' }}>
               <MapPin size={16} style={{ color: 'var(--color-accent)' }} />
               <span>69 Queen St, Melbourne, Australia</span>
             </div>

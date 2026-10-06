@@ -27,30 +27,31 @@ export default function ArcheraLogo({ size = 38, className = '', style = {} }) {
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%', display: 'block' }}
       >
-        {/* Subtle translucent dark backdrop that merges seamlessly with page */}
+        {/* Subtle backdrop that merges seamlessly with page */}
         <rect
           x="1"
           y="1"
           width="42"
           height="42"
-          fill="#141414"
-          fillOpacity="0.8"
-          stroke="#e8a849"
+          fill="var(--color-bg-card, #FFFFFF)"
+          fillOpacity="0.95"
+          stroke="var(--color-accent, #C5A059)"
           strokeWidth="1.2"
           strokeOpacity="0.4"
+          rx="2"
         />
 
         {/* Architectural drafting corner tick marks */}
-        <path d="M1 7V1H7" stroke="#e8a849" strokeWidth="1.8" strokeLinecap="square" />
-        <path d="M43 7V1H37" stroke="#e8a849" strokeWidth="1.8" strokeLinecap="square" />
-        <path d="M1 37V43H7" stroke="#e8a849" strokeWidth="1.8" strokeLinecap="square" />
-        <path d="M43 37V43H37" stroke="#e8a849" strokeWidth="1.8" strokeLinecap="square" />
+        <path d="M1 7V1H7" stroke="var(--color-accent, #C5A059)" strokeWidth="1.8" strokeLinecap="square" />
+        <path d="M43 7V1H37" stroke="var(--color-accent, #C5A059)" strokeWidth="1.8" strokeLinecap="square" />
+        <path d="M1 37V43H7" stroke="var(--color-accent, #C5A059)" strokeWidth="1.8" strokeLinecap="square" />
+        <path d="M43 37V43H37" stroke="var(--color-accent, #C5A059)" strokeWidth="1.8" strokeLinecap="square" />
 
         {/* Architectural 'A' Chevron Apex (Pure 2D vectors) */}
         <path
           d="M22 8L11 34H16L18.8 27H25.2L28 34H33L22 8Z"
           fill="none"
-          stroke="#e8a849"
+          stroke="var(--color-accent, #C5A059)"
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -61,13 +62,13 @@ export default function ArcheraLogo({ size = 38, className = '', style = {} }) {
           y1="24.5"
           x2="24.5"
           y2="24.5"
-          stroke="#ffffff"
+          stroke="var(--color-text, #2C1E16)"
           strokeWidth="1.8"
           strokeLinecap="round"
         />
 
         {/* Central architectural keystone / apex dot */}
-        <circle cx="22" cy="16" r="1.5" fill="#e8a849" />
+        <circle cx="22" cy="16" r="1.5" fill="var(--color-accent, #C5A059)" />
 
         {/* Minimal baseline architectural line */}
         <line
@@ -75,7 +76,7 @@ export default function ArcheraLogo({ size = 38, className = '', style = {} }) {
           y1="38"
           x2="35"
           y2="38"
-          stroke="#e8a849"
+          stroke="var(--color-accent, #C5A059)"
           strokeWidth="1"
           strokeOpacity="0.5"
         />

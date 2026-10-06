@@ -55,8 +55,9 @@ export default function ScheduleTourModal({ property, isOpen, onClose }) {
     }} onClick={onClose}>
       <div
         style={{
-          background: '#181818',
+          background: 'var(--color-bg-card)',
           border: '1px solid var(--color-border-accent)',
+          boxShadow: 'var(--shadow-card)',
           width: '100%',
           maxWidth: '540px',
           maxHeight: '90vh',
@@ -87,7 +88,7 @@ export default function ScheduleTourModal({ property, isOpen, onClose }) {
               width: '56px',
               height: '56px',
               borderRadius: '50%',
-              background: 'rgba(232, 168, 73, 0.15)',
+              background: 'rgba(197, 160, 89, 0.15)',
               border: '2px solid var(--color-accent)',
               display: 'flex',
               alignItems: 'center',
@@ -96,11 +97,11 @@ export default function ScheduleTourModal({ property, isOpen, onClose }) {
             }}>
               <CheckCircle size={32} style={{ color: 'var(--color-accent)' }} />
             </div>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginBottom: '12px' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)', marginBottom: '12px' }}>
               Private Viewing Requested
             </h3>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.6, marginBottom: '24px' }}>
-              Thank you, <strong style={{ color: '#fff' }}>{formData.name}</strong>. An Archera private acquisitions advisor will contact you within 24 hours to confirm credentials and schedule access.
+              Thank you, <strong style={{ color: 'var(--color-text)' }}>{formData.name}</strong>. An Archera private acquisitions advisor will contact you within 24 hours to confirm credentials and schedule access.
             </p>
             <button
               onClick={() => { setSuccess(false); onClose(); }}
@@ -113,7 +114,7 @@ export default function ScheduleTourModal({ property, isOpen, onClose }) {
         ) : (
           <div>
             <div className="section-subtitle">CONFIDENTIAL CONSULTATION</div>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '26px', color: '#ffffff', marginBottom: '6px' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '26px', color: 'var(--color-text)', marginBottom: '6px' }}>
               Schedule Private Viewing
             </h3>
             {property && (

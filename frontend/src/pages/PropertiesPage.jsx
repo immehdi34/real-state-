@@ -123,10 +123,10 @@ export default function PropertiesPage() {
                     borderRadius: '2px',
                     background: selectedType.toLowerCase() === cat.toLowerCase()
                       ? 'var(--color-accent)'
-                      : 'rgba(255, 255, 255, 0.06)',
+                      : 'rgba(44, 30, 22, 0.06)',
                     color: selectedType.toLowerCase() === cat.toLowerCase()
-                      ? '#141414'
-                      : '#ffffff',
+                      ? '#FFFFFF'
+                      : 'var(--color-text)',
                     border: '1px solid var(--color-border)'
                   }}
                 >
@@ -180,8 +180,8 @@ export default function PropertiesPage() {
                   onClick={() => setViewMode('grid')}
                   style={{
                     padding: '8px 12px',
-                    background: viewMode === 'grid' ? 'var(--color-accent)' : 'rgba(255, 255, 255, 0.05)',
-                    color: viewMode === 'grid' ? '#141414' : '#ffffff'
+                    background: viewMode === 'grid' ? 'var(--color-accent)' : 'var(--color-bg-card)',
+                    color: viewMode === 'grid' ? '#FFFFFF' : 'var(--color-text)'
                   }}
                   title="Grid View"
                 >
@@ -191,8 +191,8 @@ export default function PropertiesPage() {
                   onClick={() => setViewMode('map')}
                   style={{
                     padding: '8px 12px',
-                    background: viewMode === 'map' ? 'var(--color-accent)' : 'rgba(255, 255, 255, 0.05)',
-                    color: viewMode === 'map' ? '#141414' : '#ffffff'
+                    background: viewMode === 'map' ? 'var(--color-accent)' : 'var(--color-bg-card)',
+                    color: viewMode === 'map' ? '#FFFFFF' : 'var(--color-text)'
                   }}
                   title="Map View (Red pins = Sold)"
                 >
@@ -209,7 +209,7 @@ export default function PropertiesPage() {
         <div className="archera-container with-left-rail">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
             <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
-              Showing <strong style={{ color: '#ffffff' }}>{sorted.length}</strong> properties
+              Showing <strong style={{ color: 'var(--color-text)' }}>{sorted.length}</strong> properties
               {selectedType !== 'All' && <span> in <strong style={{ color: 'var(--color-accent)' }}>{selectedType}</strong></span>}
             </div>
           </div>
@@ -235,9 +235,10 @@ export default function PropertiesPage() {
               padding: '80px 20px',
               background: 'var(--color-bg-card)',
               border: '1px solid var(--color-border)',
+              boxShadow: 'var(--shadow-card)',
               borderRadius: '2px'
             }}>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)', marginBottom: '8px' }}>
                 No Properties Found
               </h3>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '24px' }}>

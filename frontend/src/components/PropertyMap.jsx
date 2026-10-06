@@ -33,8 +33,8 @@ const createDraftPinIcon = (isSold) => {
     className: 'draft-map-pin',
     html: `
       <div style="position: relative; display: flex; flex-direction: column; align-items: center; animation: bounce 0.6s infinite alternate;">
-        <div style="background: #e8a849; color: #141414; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 2px; margin-bottom: 2px;">NEW LOCATION</div>
-        <div style="width: 20px; height: 20px; border-radius: 50%; background: ${isSold ? '#ef4444' : '#e8a849'}; border: 3px solid #fff; box-shadow: 0 0 16px ${isSold ? '#ef4444' : '#e8a849'};"></div>
+        <div style="background: #C5A059; color: #FFFFFF; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 2px; margin-bottom: 2px;">NEW LOCATION</div>
+        <div style="width: 20px; height: 20px; border-radius: 50%; background: ${isSold ? '#ef4444' : '#C5A059'}; border: 3px solid #fff; box-shadow: 0 0 16px ${isSold ? '#ef4444' : '#C5A059'};"></div>
       </div>
     `,
     iconSize: [80, 50],
@@ -190,15 +190,15 @@ export default function PropertyMap({
           top: '16px',
           left: '50%',
           transform: 'translateX(-50%)',
-          background: 'rgba(20, 20, 20, 0.95)',
+          background: 'var(--color-bg-card)',
           border: '1px solid var(--color-accent)',
           padding: '10px 20px',
           borderRadius: '2px',
-          color: '#ffffff',
+          color: 'var(--color-text)',
           fontSize: '13px',
           fontWeight: 600,
           zIndex: 1000,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.8)'
+          boxShadow: 'var(--shadow-card)'
         }}>
           ✨ {toastMsg}
         </div>
@@ -224,25 +224,25 @@ export default function PropertyMap({
                 boxShadow: '0 0 8px rgba(239, 68, 68, 0.8)',
                 display: 'inline-block'
               }} />
-              <span style={{ color: '#ffffff', fontWeight: 600 }}>Red Pin = Sold Property / Land</span>
+              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>Red Pin = Sold Property / Land</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{
                 width: '10px',
                 height: '10px',
                 borderRadius: '50%',
-                background: '#e8a849',
-                boxShadow: '0 0 8px rgba(232, 168, 73, 0.8)',
+                background: 'var(--color-accent)',
+                boxShadow: '0 0 8px rgba(197, 160, 89, 0.8)',
                 display: 'inline-block'
               }} />
-              <span style={{ color: '#ffffff', fontWeight: 600 }}>Gold Pin = Available Listing</span>
+              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>Gold Pin = Available Listing</span>
             </div>
           </div>
 
           {/* Action Buttons: Tile Layer Switcher, Filter Pills & Add Property */}
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
             {/* Tile Layer Selector (Google Maps / Satellite / Dark) */}
-            <div style={{ display: 'inline-flex', background: 'rgba(255, 255, 255, 0.06)', borderRadius: '2px', padding: '2px', border: '1px solid var(--color-border)' }}>
+            <div style={{ display: 'inline-flex', background: 'var(--color-bg-card)', borderRadius: '2px', padding: '2px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)' }}>
               <button
                 onClick={() => setTileMode('google')}
                 style={{
@@ -251,7 +251,7 @@ export default function PropertyMap({
                   padding: '5px 10px',
                   borderRadius: '2px',
                   background: tileMode === 'google' ? 'var(--color-accent)' : 'transparent',
-                  color: tileMode === 'google' ? '#141414' : 'var(--color-text-secondary)',
+                  color: tileMode === 'google' ? '#FFFFFF' : 'var(--color-text-secondary)',
                   border: 'none',
                   cursor: 'pointer'
                 }}
@@ -267,7 +267,7 @@ export default function PropertyMap({
                   padding: '5px 10px',
                   borderRadius: '2px',
                   background: tileMode === 'satellite' ? 'var(--color-accent)' : 'transparent',
-                  color: tileMode === 'satellite' ? '#141414' : 'var(--color-text-secondary)',
+                  color: tileMode === 'satellite' ? '#FFFFFF' : 'var(--color-text-secondary)',
                   border: 'none',
                   cursor: 'pointer'
                 }}
@@ -283,7 +283,7 @@ export default function PropertyMap({
                   padding: '5px 10px',
                   borderRadius: '2px',
                   background: tileMode === 'dark' ? 'var(--color-accent)' : 'transparent',
-                  color: tileMode === 'dark' ? '#141414' : 'var(--color-text-secondary)',
+                  color: tileMode === 'dark' ? '#FFFFFF' : 'var(--color-text-secondary)',
                   border: 'none',
                   cursor: 'pointer'
                 }}
@@ -302,8 +302,8 @@ export default function PropertyMap({
                   fontWeight: 700,
                   padding: '6px 12px',
                   borderRadius: '2px',
-                  background: filter === 'all' ? 'var(--color-accent)' : 'rgba(255, 255, 255, 0.08)',
-                  color: filter === 'all' ? '#141414' : '#ffffff',
+                  background: filter === 'all' ? 'var(--color-accent)' : 'var(--color-bg-card)',
+                  color: filter === 'all' ? '#FFFFFF' : 'var(--color-text)',
                   border: '1px solid var(--color-border)',
                   cursor: 'pointer'
                 }}
@@ -332,8 +332,8 @@ export default function PropertyMap({
                   fontWeight: 700,
                   padding: '6px 12px',
                   borderRadius: '2px',
-                  background: filter === 'available' ? 'var(--color-accent)' : 'rgba(232, 168, 73, 0.12)',
-                  color: filter === 'available' ? '#141414' : 'var(--color-accent)',
+                  background: filter === 'available' ? 'var(--color-accent)' : 'var(--color-bg-card)',
+                  color: filter === 'available' ? '#FFFFFF' : 'var(--color-text)',
                   border: '1px solid var(--color-border)',
                   cursor: 'pointer'
                 }}
@@ -372,7 +372,7 @@ export default function PropertyMap({
             left: '50%',
             transform: 'translateX(-50%)',
             background: 'var(--color-accent)',
-            color: '#141414',
+            color: '#FFFFFF',
             padding: '8px 18px',
             borderRadius: '20px',
             fontWeight: 700,
@@ -509,13 +509,13 @@ export default function PropertyMap({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <div>
                 <span className="section-subtitle" style={{ margin: 0 }}>MAP LOCATION PLOTTER</span>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff', marginTop: '4px' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)', marginTop: '4px' }}>
                   Add Property Marker
                 </h3>
               </div>
               <button
                 onClick={() => setShowAddModal(false)}
-                style={{ background: 'transparent', border: 'none', color: '#ffffff', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--color-text)', cursor: 'pointer' }}
               >
                 <X size={22} />
               </button>
@@ -608,7 +608,7 @@ export default function PropertyMap({
                     }}
                     style={{
                       background: 'var(--color-accent)',
-                      color: '#141414',
+                      color: '#FFFFFF',
                       border: 'none',
                       padding: '4px 10px',
                       borderRadius: '2px',

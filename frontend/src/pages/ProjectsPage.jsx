@@ -56,7 +56,7 @@ export default function ProjectsPage() {
               <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 CLOSED TRANSACTIONS
               </div>
-              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: '#ffffff', marginTop: '4px' }}>
+              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: 'var(--color-text)', marginTop: '4px' }}>
                 {properties.length} Estates & Lands
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
               <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 MEDIAN DAYS ON MARKET
               </div>
-              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: '#ffffff', marginTop: '4px' }}>
+              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '28px', color: 'var(--color-text)', marginTop: '4px' }}>
                 42 Days
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
         <div className="archera-container with-left-rail">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <div>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: '#ffffff' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--color-text)' }}>
                 Interactive Global Sold Map
               </h2>
               <p style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <h3 className="portfolio-card-title">
-                    <Link to={`/properties/${prop.id}`} style={{ color: '#ffffff' }}>
+                    <Link to={`/properties/${prop.id}`} style={{ color: 'var(--color-text)' }}>
                       {prop.title}
                     </Link>
                   </h3>
@@ -179,7 +179,7 @@ export default function ProjectsPage() {
                       <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--color-text-muted)' }}>
                         RECORD SALE PRICE
                       </div>
-                      <div className="portfolio-card-price" style={{ color: '#ffffff' }}>
+                      <div className="portfolio-card-price">
                         {prop.price_formatted}
                       </div>
                     </div>

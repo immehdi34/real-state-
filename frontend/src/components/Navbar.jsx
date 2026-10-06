@@ -52,7 +52,7 @@ export default function Navbar() {
                   fontFamily: 'var(--font-heading)',
                   fontSize: '22px',
                   letterSpacing: '1.5px',
-                  color: '#ffffff',
+                  color: 'var(--color-text)',
                   lineHeight: 1
                 }}
               >

@@ -221,7 +221,7 @@ export default function AdminPage() {
                 letterSpacing: '1.5px',
                 textTransform: 'uppercase',
                 background: activeTab === 'properties' ? 'var(--color-accent)' : 'transparent',
-                color: activeTab === 'properties' ? '#141414' : 'var(--color-text-secondary)',
+                color: activeTab === 'properties' ? '#FFFFFF' : 'var(--color-text-secondary)',
                 borderRadius: '2px'
               }}
             >
@@ -237,7 +237,7 @@ export default function AdminPage() {
                 letterSpacing: '1.5px',
                 textTransform: 'uppercase',
                 background: activeTab === 'inquiries' ? 'var(--color-accent)' : 'transparent',
-                color: activeTab === 'inquiries' ? '#141414' : 'var(--color-text-secondary)',
+                color: activeTab === 'inquiries' ? '#FFFFFF' : 'var(--color-text-secondary)',
                 borderRadius: '2px'
               }}
             >
@@ -253,7 +253,7 @@ export default function AdminPage() {
                 letterSpacing: '1.5px',
                 textTransform: 'uppercase',
                 background: activeTab === 'messages' ? 'var(--color-accent)' : 'transparent',
-                color: activeTab === 'messages' ? '#141414' : 'var(--color-text-secondary)',
+                color: activeTab === 'messages' ? '#FFFFFF' : 'var(--color-text-secondary)',
                 borderRadius: '2px'
               }}
             >
@@ -269,7 +269,7 @@ export default function AdminPage() {
                 letterSpacing: '1.5px',
                 textTransform: 'uppercase',
                 background: activeTab === 'supabase' ? 'var(--color-accent)' : 'transparent',
-                color: activeTab === 'supabase' ? '#141414' : 'var(--color-text-secondary)',
+                color: activeTab === 'supabase' ? '#FFFFFF' : 'var(--color-text-secondary)',
                 borderRadius: '2px'
               }}
             >
@@ -286,8 +286,8 @@ export default function AdminPage() {
           {activeTab === 'properties' && (
             <div>
               {/* Add New Property Form */}
-              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', padding: '32px', borderRadius: '2px', marginBottom: '40px' }}>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: '#ffffff', marginBottom: '8px' }}>
+              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)', padding: '32px', borderRadius: '2px', marginBottom: '40px' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: 'var(--color-text)', marginBottom: '8px' }}>
                   Add New Listing or Sold Asset
                 </h3>
                 <p style={{ color: 'var(--color-text-muted)', fontSize: '13px', marginBottom: '24px' }}>
@@ -469,14 +469,14 @@ export default function AdminPage() {
               </div>
 
               {/* Properties Table */}
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '16px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '16px' }}>
                 All Properties & Status Management
               </h3>
 
-              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '2px', overflowX: 'auto' }}>
+              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)', borderRadius: '2px', overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px', textAlign: 'left' }}>
                   <thead>
-                    <tr style={{ background: '#141414', borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                    <tr style={{ background: 'var(--color-bg-section)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                       <th style={{ padding: '14px 16px' }}>Property</th>
                       <th style={{ padding: '14px 16px' }}>Type</th>
                       <th style={{ padding: '14px 16px' }}>Price</th>
@@ -488,7 +488,7 @@ export default function AdminPage() {
                   <tbody>
                     {properties.map((p) => (
                       <tr key={p.id} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                        <td style={{ padding: '14px 16px', fontWeight: 600, color: '#ffffff' }}>
+                        <td style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--color-text)' }}>
                           {p.title}
                         </td>
                         <td style={{ padding: '14px 16px' }}>
@@ -555,7 +555,7 @@ export default function AdminPage() {
           {/* TAB 2: INQUIRIES */}
           {activeTab === 'inquiries' && (
             <div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '16px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '16px' }}>
                 Private Showing Requests
               </h3>
               {inquiries.length === 0 ? (
@@ -563,10 +563,10 @@ export default function AdminPage() {
                   No viewing inquiries received yet.
                 </div>
               ) : (
-                <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '2px', overflowX: 'auto' }}>
+                <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)', borderRadius: '2px', overflowX: 'auto' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
                     <thead>
-                      <tr style={{ background: '#141414', borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'left' }}>
+                      <tr style={{ background: 'var(--color-bg-section)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'left' }}>
                         <th style={{ padding: '14px 16px' }}>Client</th>
                         <th style={{ padding: '14px 16px' }}>Email & Phone</th>
                         <th style={{ padding: '14px 16px' }}>Property / Inquiry</th>
@@ -577,7 +577,7 @@ export default function AdminPage() {
                     <tbody>
                       {inquiries.map((inq) => (
                         <tr key={inq.id} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                          <td style={{ padding: '14px 16px', fontWeight: 600, color: '#ffffff' }}>{inq.name}</td>
+                          <td style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--color-text)' }}>{inq.name}</td>
                           <td style={{ padding: '14px 16px', color: 'var(--color-text-secondary)' }}>
                             {inq.email}<br />{inq.phone || '—'}
                           </td>
@@ -602,7 +602,7 @@ export default function AdminPage() {
           {/* TAB 3: CONTACT MESSAGES */}
           {activeTab === 'messages' && (
             <div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: '#ffffff', marginBottom: '16px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', color: 'var(--color-text)', marginBottom: '16px' }}>
                 Contact Messages Received
               </h3>
               {messages.length === 0 ? (
@@ -612,10 +612,10 @@ export default function AdminPage() {
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {messages.map((msg) => (
-                    <div key={msg.id} style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', padding: '24px', borderRadius: '2px' }}>
+                    <div key={msg.id} style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)', padding: '24px', borderRadius: '2px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
                         <div>
-                          <strong style={{ fontSize: '16px', color: '#ffffff' }}>{msg.name}</strong>
+                          <strong style={{ fontSize: '16px', color: 'var(--color-text)' }}>{msg.name}</strong>
                           <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
                             {msg.email} {msg.phone && `· ${msg.phone}`}
                           </div>
@@ -624,7 +624,7 @@ export default function AdminPage() {
                           {new Date(msg.created_at).toLocaleString()}
                         </span>
                       </div>
-                      <p style={{ color: '#ffffff', fontSize: '14px', lineHeight: 1.6, background: '#141414', padding: '16px', borderRadius: '2px', border: '1px solid var(--color-border)' }}>
+                      <p style={{ color: 'var(--color-text)', fontSize: '14px', lineHeight: 1.6, background: 'var(--color-bg-section)', padding: '16px', borderRadius: '2px', border: '1px solid var(--color-border)' }}>
                         {msg.message}
                       </p>
                     </div>
@@ -637,17 +637,17 @@ export default function AdminPage() {
           {/* TAB 4: SUPABASE GATEWAY */}
           {activeTab === 'supabase' && (
             <div style={{ maxWidth: '640px' }}>
-              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', padding: '36px', borderRadius: '2px' }}>
+              <div style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)', padding: '36px', borderRadius: '2px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   <Database size={24} style={{ color: 'var(--color-accent)' }} />
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: '#ffffff' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', color: 'var(--color-text)' }}>
                     Supabase Cloud Database
                   </h3>
                 </div>
 
                 <div style={{
                   padding: '16px',
-                  background: '#141414',
+                  background: 'var(--color-bg-section)',
                   border: '1px solid var(--color-border)',
                   borderRadius: '2px',
                   marginBottom: '24px'

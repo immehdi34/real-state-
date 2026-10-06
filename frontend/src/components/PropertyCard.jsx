@@ -49,7 +49,7 @@ export default function PropertyCard({ property }) {
         </div>
 
         <h3 className="portfolio-card-title">
-          <Link to={`/properties/${property.id}`} style={{ color: '#ffffff' }}>
+          <Link to={`/properties/${property.id}`} style={{ color: 'var(--color-text)' }}>
             {property.title}
           </Link>
         </h3>
