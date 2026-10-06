@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ArcheraLogo from './ArcheraLogo';
 import RightNavRail from './RightNavRail';
 import { scrollToSection } from '../utils/navigation';
@@ -36,7 +37,12 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="archera-header fixed top-0 w-full z-50">
+      <motion.header
+        className="archera-header fixed top-0 w-full z-50"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="archera-container header-inner">
           {/* Brand Logo with Bespoke 2D Vector Archera Logo */}
           <a
@@ -117,7 +123,7 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Persistent Right-Side Vertical Navigation with Hover Animations & Working Links */}
       <RightNavRail

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowRight, Compass, ShieldCheck, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ArcheraLogo from '../components/ArcheraLogo';
 import TypesSection from '../components/TypesSection';
 import ProjectsSection from '../components/ProjectsSection';
@@ -58,7 +59,12 @@ export default function HomePage({ defaultSection }) {
       >
         <div className="hero-overlay" />
         <div className="archera-container with-left-rail" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="hero-content">
+          <motion.div
+            className="hero-content"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
             <div className="hero-badge-row" style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
               <ArcheraLogo size={34} />
               <span className="section-subtitle" style={{ margin: 0 }}>
@@ -96,7 +102,7 @@ export default function HomePage({ defaultSection }) {
                 VIEW SOLD PROJECTS
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

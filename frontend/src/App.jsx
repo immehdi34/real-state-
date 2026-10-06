@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LeftRail from './components/LeftRail';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 
 // Code splitting / Lazy-loaded subpages for fast initial load
@@ -68,7 +69,11 @@ function AppContent() {
   const isSubpage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/properties/');
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: isSubpage ? 'auto' : 'hidden', background: 'var(--color-bg-dark)', color: 'var(--color-text)' }}>
+    <>
+      {/* High-End Architectural Preloader */}
+      <Preloader minDuration={1300} />
+
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: isSubpage ? 'auto' : 'hidden', background: 'var(--color-bg-dark)', color: 'var(--color-text)' }}>
       {/* Fixed Header Navbar */}
       <Navbar />
 
@@ -102,6 +107,7 @@ function AppContent() {
       {/* Global Footer only on standalone subpages */}
       {isSubpage && <Footer />}
     </div>
+    </>
   );
 }
 
