@@ -34,7 +34,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="contact-section" style={{ backgroundImage: "url('/images/contact_bg.jpg')" }}>
+    <section className="contact-section" id="contact" style={{ backgroundImage: "url('/images/contact_bg.jpg')" }}>
       <div className="contact-overlay" />
       <div className="archera-container with-left-rail" style={{ position: 'relative', zIndex: 2 }}>
         <div className="contact-inner">

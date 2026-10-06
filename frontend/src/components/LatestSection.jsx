@@ -23,13 +23,13 @@ export default function LatestSection({ properties = [] }) {
           <div>
             <span className="section-subtitle">CURATED COLLECTIONS</span>
             <h2 className="section-title">
-              From Our Portfolio
+              Our Properties
             </h2>
             <div className="gold-divider" />
           </div>
 
-          <Link to="/latest" className="btn-outline-gold" style={{ fontSize: '11px' }}>
-            VIEW FULL COLLECTION →
+          <Link to="/properties" className="btn-outline-gold" style={{ fontSize: '11px' }}>
+            VIEW ALL PROPERTIES →
           </Link>
         </div>
 

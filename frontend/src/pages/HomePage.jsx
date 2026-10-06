@@ -5,7 +5,6 @@ import ArcheraLogo from '../components/ArcheraLogo';
 import TypesSection from '../components/TypesSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
-import TestimonialsSection from '../components/TestimonialsSection';
 import LatestSection from '../components/LatestSection';
 import ContactSection from '../components/ContactSection';
 import { api } from '../services/api';
@@ -35,6 +34,7 @@ export default function HomePage() {
       {/* 1. HERO SECTION (ARCHERA REAL ESTATES / PREMIUM PROPERTIES) */}
       <section
         className="hero-section"
+        id="hero"
         style={{ backgroundImage: "url('/images/hero_bg.jpg')" }}
       >
         <div className="hero-overlay" />
@@ -77,13 +77,10 @@ export default function HomePage() {
       {/* 3. PROJECT SECTION -> SOLD PROPERTIES WITH RED LOCATION PINS ON MAP */}
       <ProjectsSection properties={properties} />
 
-      {/* 4. ABOUT SECTION (Real estate heritage, 6 Years, 12 Awards, 56 Sold) */}
+      {/* 4. ABOUT SECTION (Real estate heritage, 12 Awards, 56 Sold) */}
       <AboutSection />
 
-      {/* 5. TESTIMONIALS SECTION (Robert Smith CEO & Founder Review) */}
-      <TestimonialsSection />
-
-      {/* 6. LATEST SECTION (From Our Portfolio / Latest Properties) */}
+      {/* 5. LATEST SECTION (Our Properties / Latest Properties) */}
       <LatestSection properties={properties} />
 
       {/* 7. CONTACT SECTION (Let's grab a coffee and start a conversation) */}
