@@ -14,6 +14,42 @@ const LatestPage = lazy(() => import('./pages/LatestPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 
+// Error boundary to catch any runtime rendering errors and prevent blank screens
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught:', error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '120px 20px', textAlign: 'center', color: '#fff', background: '#141414', minHeight: '100vh' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)', marginBottom: '16px' }}>
+            Archera Real Estates
+          </h2>
+          <p style={{ color: 'var(--color-text-secondary)', marginBottom: '24px' }}>
+            Restoring live connection. Click below to reload.
+          </p>
+          <button
+            onClick={() => { window.location.href = '/'; }}
+            className="btn-gold"
+            style={{ padding: '10px 24px', fontSize: '12px' }}
+          >
+            RELOAD HOME
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 // Helper component to scroll to top only for isolated subpages like /admin or /properties/:id
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,9 +65,10 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--color-bg-dark)', color: 'var(--color-text)' }}>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <ScrollToTop />
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--color-bg-dark)', color: 'var(--color-text)' }}>
         {/* Fixed Header Navbar */}
         <Navbar />
 
@@ -66,5 +103,6 @@ export default function App() {
         <Footer />
       </div>
     </BrowserRouter>
+  </ErrorBoundary>
   );
 }
