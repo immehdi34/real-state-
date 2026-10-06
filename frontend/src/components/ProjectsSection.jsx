@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 import PropertyMap from './PropertyMap';
 import { scrollToSection } from '../utils/navigation';
