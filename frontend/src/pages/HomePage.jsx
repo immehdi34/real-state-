@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Compass, ShieldCheck, MapPin } from 'lucide-react';
+import ArcheraLogo from '../components/ArcheraLogo';
 import TypesSection from '../components/TypesSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
@@ -31,7 +32,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* 1. HERO SECTION (THEMINEARCH REAL ESTATE / PREMIUM PROPERTIES) */}
+      {/* 1. HERO SECTION (ARCHERA REAL ESTATES / PREMIUM PROPERTIES) */}
       <section
         className="hero-section"
         style={{ backgroundImage: "url('/images/hero_bg.jpg')" }}
@@ -39,13 +40,16 @@ export default function HomePage() {
         <div className="hero-overlay" />
         <div className="archera-container with-left-rail" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-content">
-            <span className="section-subtitle">
-              WELCOME TO THEMINEARCH REAL ESTATE
-            </span>
+            <div className="hero-badge-row" style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
+              <ArcheraLogo size={34} />
+              <span className="section-subtitle" style={{ margin: 0 }}>
+                WELCOME TO ARCHERA REAL ESTATES
+              </span>
+            </div>
 
             <h1 className="hero-title font-heading">
-              THEMINEARCH<br />
-              <span className="highlight">REAL ESTATE</span><br />
+              ARCHERA<br />
+              <span className="highlight">REAL ESTATES</span><br />
               PREMIUM PROPERTIES
             </h1>
 

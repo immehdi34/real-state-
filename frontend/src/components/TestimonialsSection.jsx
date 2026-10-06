@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
           </span>
 
           <blockquote className="testimonial-quote-text">
-            "TheMineArch helped us find the perfect commercial space with absolute transparency and professionalism. Highly recommended for real estate investments and property consulting."
+            "Archera Real Estates helped us find the perfect commercial space with absolute transparency and professionalism. Highly recommended for real estate investments and property consulting."
           </blockquote>
 
           <div className="gold-divider" style={{ margin: '0 auto 28px auto' }} />

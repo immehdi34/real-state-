@@ -303,38 +303,273 @@ img {
   gap: 12px;
 }
 
-.header-nav {
-  display: none;
+/* Right-Side Vertical Navigation Rail */
+.archera-right-nav {
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  right: 0;
+  width: 190px;
+  background: rgba(18, 18, 18, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--color-border);
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 0 24px 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.right-nav-header {
+  padding: 0 24px 20px 24px;
+  display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 900px) {
-  .header-nav {
-    display: flex;
-  }
+.right-nav-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+  text-transform: uppercase;
 }
 
-.nav-link {
+.right-nav-tag-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(232, 168, 73, 0.5), transparent);
+}
+
+.right-nav-list {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  gap: 4px;
+  flex: 1;
+}
+
+/* Individual Vertical Nav Item */
+.right-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
-  position: relative;
-  padding: 6px 0;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.3s ease, 
+              background 0.35s ease;
 }
-.nav-link:hover, .nav-link.active {
-  color: #ffffff;
+
+.right-nav-link-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 2;
 }
-.nav-link.active::after {
-  content: '';
+
+.right-nav-num {
+  font-size: 11px;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.right-nav-label {
+  color: inherit;
+  transition: letter-spacing 0.3s ease, color 0.3s ease;
+}
+
+.right-nav-arrow {
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  color: var(--color-accent);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.right-nav-gold-indicator {
   position: absolute;
+  top: 0;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
+  right: 0;
+  width: 3px;
   background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(232, 168, 73, 0.8), -2px 0 8px rgba(232, 168, 73, 0.4);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* COOL HOVER ANIMATIONS FOR ALL ITEMS */
+.right-nav-link:hover {
+  color: #ffffff;
+  transform: translateX(-6px);
+  background: linear-gradient(270deg, rgba(232, 168, 73, 0.14) 0%, rgba(20, 20, 20, 0) 100%);
+}
+
+.right-nav-link:hover .right-nav-num {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(232, 168, 73, 0.7);
+  transform: scale(1.1);
+}
+
+.right-nav-link:hover .right-nav-label {
+  letter-spacing: 2.5px;
+}
+
+.right-nav-link:hover .right-nav-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.right-nav-link:hover .right-nav-gold-indicator {
+  transform: scaleY(1);
+}
+
+/* Active State */
+.right-nav-link.active {
+  color: #ffffff;
+  background: linear-gradient(270deg, rgba(232, 168, 73, 0.12) 0%, rgba(20, 20, 20, 0) 100%);
+}
+.right-nav-link.active .right-nav-num {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px rgba(232, 168, 73, 0.6);
+}
+.right-nav-link.active .right-nav-gold-indicator {
+  transform: scaleY(1);
+}
+
+.right-nav-footer {
+  padding: 20px 24px 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.right-nav-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.status-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.status-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+.right-nav-location {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Header Toggle Button */
+.right-nav-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(232, 168, 73, 0.08);
+  border: 1px solid rgba(232, 168, 73, 0.35);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.right-nav-toggle-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.right-nav-toggle-btn:hover .toggle-menu-label,
+.right-nav-toggle-btn:hover .toggle-menu-icon {
+  color: #141414;
+}
+.toggle-menu-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+.toggle-menu-icon {
+  display: flex;
+  align-items: center;
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+/* Responsive docking */
+@media (min-width: 1100px) {
+  .archera-right-nav {
+    display: flex;
+    transform: translateX(0);
+  }
+  .right-nav-toggle-btn {
+    display: none;
+  }
+  .with-left-rail {
+    padding-left: var(--sidebar-rail-width);
+    padding-right: 190px;
+  }
+  .right-nav-backdrop {
+    display: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  .archera-right-nav {
+    transform: translateX(100%);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.7);
+    width: 260px;
+    top: 0;
+    z-index: 10001;
+    padding-top: 60px;
+  }
+  .archera-right-nav.mobile-open {
+    transform: translateX(0);
+  }
+  .right-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .right-nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .right-nav-toggle-btn {
+    display: flex;
+  }
 }
 
 /* Left Fixed Rail */

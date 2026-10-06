@@ -61,8 +61,8 @@ export default function ContactSection() {
             </div>
 
             <div className="contact-email">
-              <a href="mailto:contact@theminearch.com" style={{ color: 'var(--color-accent)' }}>
-                contact@theminearch.com
+              <a href="mailto:contact@archeraestates.com" style={{ color: 'var(--color-accent)' }}>
+                contact@archeraestates.com
               </a>
             </div>
 

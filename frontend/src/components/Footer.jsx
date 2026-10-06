@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUp, MapPin, Phone, Mail } from 'lucide-react';
+import ArcheraLogo from './ArcheraLogo';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -13,21 +14,16 @@ export default function Footer() {
         <div className="footer-top">
           {/* Brand & Address */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                border: '2px solid var(--color-accent)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(232, 168, 73, 0.08)'
-              }}>
-                <span style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)', fontSize: '18px' }}>A</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
+              <ArcheraLogo size={36} />
+              <div>
+                <span style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', letterSpacing: '1px', color: '#ffffff', display: 'block', lineHeight: 1 }}>
+                  ARCHERA
+                </span>
+                <span style={{ fontSize: '9px', letterSpacing: '3px', color: 'var(--color-accent)', textTransform: 'uppercase', fontWeight: 700, marginTop: '2px', display: 'block' }}>
+                  REAL ESTATES
+                </span>
               </div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', letterSpacing: '1px', color: '#ffffff' }}>
-                ARCHERA
-              </span>
             </div>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', maxWidth: '380px', lineHeight: 1.6 }}>
               Curating architectural landmarks, coastal lands, private penthouses, and heritage mansions for the world's most discerning clientele.
