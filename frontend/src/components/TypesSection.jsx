@@ -35,7 +35,7 @@ export default function TypesSection() {
   ];
 
   return (
-    <section className="types-section" id="real-estate-solutions">
+    <section className="types-section" id="services">
       <div className="archera-container with-left-rail">
         <div className="types-grid-wrapper">
           {/* Left Experience Box: 6 YEARS EXPERIENCE WORKING with clear spacing */}
@@ -64,7 +64,7 @@ export default function TypesSection() {
           {/* Right Heading + Solutions Cards */}
           <div>
             <div style={{ marginBottom: '40px' }}>
-              <span className="section-subtitle">OUR EXPERTISE</span>
+              <span className="section-subtitle">SERVICES</span>
               <h2 className="section-title">
                 We Provide Top-Tier Real Estate Designs
               </h2>
