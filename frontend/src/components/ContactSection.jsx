@@ -47,7 +47,7 @@ export default function ContactSection() {
             <div className="gold-divider" />
 
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: 1.7, maxWidth: '440px', marginBottom: '24px' }}>
-              Connect with our Melbourne headquarters or request a confidential discussion regarding private acquisitions, off-market estates, or land valuation.
+              Reach out to our real estate experts for consultations, property viewings, and market insights.
             </p>
 
             <div className="contact-address">
@@ -61,8 +61,8 @@ export default function ContactSection() {
             </div>
 
             <div className="contact-email">
-              <a href="mailto:contact@archera.com" style={{ color: 'var(--color-accent)' }}>
-                contact@archera.com
+              <a href="mailto:contact@theminearch.com" style={{ color: 'var(--color-accent)' }}>
+                contact@theminearch.com
               </a>
             </div>
 
@@ -75,10 +75,10 @@ export default function ContactSection() {
           {/* Right form column matching reference */}
           <div className="contact-form-block">
             <h3 className="contact-form-title font-heading">
-              Let's grab a coffee and <span className="highlight">chat with us.</span>
+              Let's grab a coffee and <span className="highlight">start a conversation.</span>
             </h3>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '28px' }}>
-              Leave your inquiry below. Our private brokerage division guarantees strict confidentiality.
+              Reach out to our real estate experts for consultations, property viewings, and market insights.
             </p>
 
             {submitted ? (

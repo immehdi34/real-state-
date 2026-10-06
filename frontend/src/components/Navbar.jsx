@@ -35,17 +35,17 @@ export default function Navbar() {
               color: 'var(--color-accent)',
               fontSize: '20px',
               lineHeight: 1
-            }}>A</span>
+            }}>M</span>
           </div>
           <div>
             <div style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: '22px',
+              fontSize: '20px',
               letterSpacing: '1px',
               color: '#ffffff',
               lineHeight: 1
             }}>
-              ARCHERA
+              THEMINEARCH
             </div>
             <div style={{
               fontSize: '9px',
@@ -165,7 +165,7 @@ export default function Navbar() {
               className="btn-gold"
               style={{ width: '100%', textAlign: 'center' }}
             >
-              CONTACT ARCHERA
+              CONTACT THEMINEARCH
             </Link>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { ArrowRight, Compass, ShieldCheck, MapPin } from 'lucide-react';
 import TypesSection from '../components/TypesSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
+import TestimonialsSection from '../components/TestimonialsSection';
 import LatestSection from '../components/LatestSection';
 import ContactSection from '../components/ContactSection';
 import { api } from '../services/api';
@@ -30,7 +31,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* 1. HERO SECTION (Top Section - ARCHERA / REAL ESTATE / STUDIO) */}
+      {/* 1. HERO SECTION (THEMINEARCH REAL ESTATE / PREMIUM PROPERTIES) */}
       <section
         className="hero-section"
         style={{ backgroundImage: "url('/images/hero_bg.jpg')" }}
@@ -39,19 +40,19 @@ export default function HomePage() {
         <div className="archera-container with-left-rail" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-content">
             <span className="section-subtitle">
-              WELCOME TO ARCHERA REAL ESTATE
+              WELCOME TO THEMINEARCH REAL ESTATE
             </span>
 
             <h1 className="hero-title font-heading">
-              ARCHERA<br />
+              THEMINEARCH<br />
               <span className="highlight">REAL ESTATE</span><br />
-              PORTFOLIO
+              PREMIUM PROPERTIES
             </h1>
 
             <div className="gold-divider" />
 
             <p className="hero-lead">
-              A private brokerage representing architectural icons, oceanfront estates, vineyard acreage, and sky penthouses across Australia and North America.
+              A private real estate brokerage representing architectural icons, oceanfront estates, prime development acreage, and luxury penthouses across Australia and North America.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
@@ -66,21 +67,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. SERVICES SECTION -> PROPERTY TYPES (Apartment, Land, House, Mansion + 8+ Years) */}
+      {/* 2. SERVICES SECTION -> PROPERTY MANAGEMENT & LUXURY DEVELOPMENTS (6 YEARS EXP) */}
       <TypesSection />
 
       {/* 3. PROJECT SECTION -> SOLD PROPERTIES WITH RED LOCATION PINS ON MAP */}
       <ProjectsSection properties={properties} />
 
-      {/* 4. ABOUT SECTION (Real estate heritage, 8 Years, 12 Awards, 56 Sold) */}
+      {/* 4. ABOUT SECTION (Real estate heritage, 6 Years, 12 Awards, 56 Sold) */}
       <AboutSection />
 
-      {/* 5. TESTIMONIALS SECTION -> COMPLETELY REMOVED AS REQUESTED */}
+      {/* 5. TESTIMONIALS SECTION (Robert Smith CEO & Founder Review) */}
+      <TestimonialsSection />
 
-      {/* 6. LATEST SECTION (Replacing Blog/News -> Latest & Most Expensive Properties) */}
+      {/* 6. LATEST SECTION (From Our Portfolio / Latest Properties) */}
       <LatestSection properties={properties} />
 
-      {/* 7. CONTACT SECTION (Reference Melbourne address, phone, email & functional contact form) */}
+      {/* 7. CONTACT SECTION (Let's grab a coffee and start a conversation) */}
       <ContactSection />
     </div>
   );

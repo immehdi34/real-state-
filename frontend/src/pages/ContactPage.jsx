@@ -151,10 +151,10 @@ export default function ContactPage() {
             {/* Right Form Column */}
             <div className="contact-form-block">
               <h3 className="contact-form-title font-heading">
-                Let's grab a coffee and <span className="highlight">chat with us.</span>
+                Let's grab a coffee and <span className="highlight">start a conversation.</span>
               </h3>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '24px' }}>
-                Whether seeking an off-market estate or exploring developmental land valuation, our partners are ready to assist.
+                Reach out to our real estate experts for consultations, property viewings, and market insights.
               </p>
 
               {submitted ? (

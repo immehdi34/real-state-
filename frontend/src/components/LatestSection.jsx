@@ -74,7 +74,7 @@ export default function LatestSection({ properties = [] }) {
 
               <div className="portfolio-card-body">
                 <div className="portfolio-card-meta">
-                  <span>{item.listed_at || 'MARCH 2026'}</span>
+                  <span>{item.listed_at || 'OCTOBER 15, 2026'}</span>
                   <span>{item.city}</span>
                 </div>
 
